@@ -70,13 +70,13 @@ release()
 
 grab path/to/my/resource || exit 1
 # Do something with it
-sleep 1
+sleep 10
 echo doing...
-sleep 1
+sleep 10
 echo doing...
-sleep 1
+sleep 10
 echo doing...
-sleep 1
+sleep 10
 echo done.
 release path/to/my/resource || exit 1
 

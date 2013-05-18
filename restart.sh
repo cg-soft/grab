@@ -6,9 +6,9 @@ mkdir -p "$logdir"
 if "$here"/grab.py shutdown --verbose
 then
   rm -f "$logdir/log.3"
-  mv "$logdir/log.2" "$logdir/log.3"
-  mv "$logdir/log.1" "$logdir/log.2"
-  mv "$logdir/log" "$logdir/log.1"
+  test -r "$logdir/log.2" && mv "$logdir/log.2" "$logdir/log.3"
+  test -r "$logdir/log.1" && mv "$logdir/log.1" "$logdir/log.2"
+  test -r "$logdir/log"   && mv "$logdir/log"   "$logdir/log.1"
   nohup node "$here"/grab.js "$@" >"$logdir/log" 2>&1 &
   echo $! > "$logdir"/pid
   retries=x
