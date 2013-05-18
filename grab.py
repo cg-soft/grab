@@ -15,7 +15,8 @@ def usage(error=""):
 %s <op> [<resource>] [<options>]
 
 Poll lock service to obtain a resource. The resource can be 
-any alphanumeric string no longer than 100 characters.
+any pathname using "/" as a separator and having alphanumeric
+component strings. 
 
 Operations are:
 
@@ -49,19 +50,14 @@ Options are:
 
 --help
    Displays this text
-
 --owner
    Owner of the request
-
 --max-attempts
    How often to attempt a request.
-
 --sleep=<time>
    How long to sleep between polls
-
 --url
    Url of lock service
-
 --verbose
    Show all requests and responses
 
