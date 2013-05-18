@@ -1,0 +1,34 @@
+# actor  op       resource  comment
+# =====  ==       ========  =======
+  any    config   any
+  me     grab     lunch     grab me/lunch
+  me     grab     lunch/1   grab me/lunch/1
+  you    grab     lunch     grab you/lunch
+  you    grab     lunch/2   grab you/lunch/2
+  charly grab     lunch/2   grab charly/lunch/2
+  me     grab     dinner    grab me/dinner
+  you    grab     dinner    grab you/dinner
+  charly grab     lunch     grab charly/lunch
+  charly grab     lunch/1   grab charly/lunch/1
+  you    grab     lunch     grab you/lunch
+  you    release  lunch/2   release me/lunch/2
+  me     grab     lunch/1   grab me/lunch/1
+  charly grab     lunch/2   grab charly/lunch/2
+  me     release  lunch     release me/lunch
+  charly grab     lunch/2   grab charly/lunch/2
+  charly release  lunch/2   release charly/lunch/2
+  me     grab     lunch/1   grab me/lunch/1
+  charly release  lunch     release charly/lunch
+  charly release  lunch/1   release charly/lunch/1
+  me     release  lunch/1   release me/lunch/1
+  charly grab     lunch/1   grab charly/lunch/1
+  you    grab     dinner    grab you/dinner
+  me     release  dinner    release me/dinner
+  you    grab     dinner    grab you/dinner
+  any    shutdown all       shutdown should fail
+  you    release  dinner    release you/dinner
+  any    shutdown all       shutdown should fail
+  charly release  lunch/1   release charly/lunch/1
+  you    release  lunch/2   release you/lunch/1
+  you    release  lunch     release you/lunch
+  any    shutdown all       shutdown should now work

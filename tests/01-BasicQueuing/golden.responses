@@ -1,0 +1,1712 @@
+
+{
+  "data": {
+    "debug": true,
+    "gc_interval": "1000000",
+    "help": false,
+    "host": "127.0.0.1",
+    "port": "port",
+    "timeout": "1000000",
+    "timestamp": timestamp,
+    "version": "VERSION" },
+  "id": "any/any",
+  "op": "config",
+  "resource": "/any",
+  "status": "ok" }
+== After config any by any:
+{
+  "data": {},
+  "id": "any/any",
+  "op": "dump",
+  "resource": "/any",
+  "status": "ok" }
+==
+grab me/lunch
+{
+  "data": {
+    "/lunch": 1 },
+  "id": "me/lunch",
+  "op": "grab",
+  "resource": "/lunch",
+  "status": "ok" }
+== After grab lunch by me:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false } ] },
+  "id": "me/lunch",
+  "op": "dump",
+  "resource": "/lunch",
+  "status": "ok" }
+==
+grab me/lunch/1
+{
+  "data": {
+    "/lunch": 2,
+    "/lunch/1": 1 },
+  "id": "me/lunch/1",
+  "op": "grab",
+  "resource": "/lunch/1",
+  "status": "wait" }
+== After grab lunch/1 by me:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "me/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+grab you/lunch
+{
+  "data": {
+    "/lunch": 3 },
+  "id": "you/lunch",
+  "op": "grab",
+  "resource": "/lunch",
+  "status": "wait" }
+== After grab lunch by you:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "you/lunch",
+  "op": "dump",
+  "resource": "/lunch",
+  "status": "ok" }
+==
+grab you/lunch/2
+{
+  "data": {
+    "/lunch": 4,
+    "/lunch/2": 1 },
+  "id": "you/lunch/2",
+  "op": "grab",
+  "resource": "/lunch/2",
+  "status": "wait" }
+== After grab lunch/2 by you:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "you/lunch/2",
+  "op": "dump",
+  "resource": "/lunch/2",
+  "status": "ok" }
+==
+grab charly/lunch/2
+{
+  "data": {
+    "/lunch": 4,
+    "/lunch/2": 2 },
+  "id": "charly/lunch/2",
+  "op": "grab",
+  "resource": "/lunch/2",
+  "status": "wait" }
+== After grab lunch/2 by charly:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch/2",
+  "op": "dump",
+  "resource": "/lunch/2",
+  "status": "ok" }
+==
+grab me/dinner
+{
+  "data": {
+    "/dinner": 1 },
+  "id": "me/dinner",
+  "op": "grab",
+  "resource": "/dinner",
+  "status": "ok" }
+== After grab dinner by me:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "me/dinner",
+  "op": "dump",
+  "resource": "/dinner",
+  "status": "ok" }
+==
+grab you/dinner
+{
+  "data": {
+    "/dinner": 2 },
+  "id": "you/dinner",
+  "op": "grab",
+  "resource": "/dinner",
+  "status": "wait" }
+== After grab dinner by you:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "you/dinner",
+  "op": "dump",
+  "resource": "/dinner",
+  "status": "ok" }
+==
+grab charly/lunch
+{
+  "data": {
+    "/lunch": 5 },
+  "id": "charly/lunch",
+  "op": "grab",
+  "resource": "/lunch",
+  "status": "wait" }
+== After grab lunch by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch",
+  "op": "dump",
+  "resource": "/lunch",
+  "status": "ok" }
+==
+grab charly/lunch/1
+{
+  "data": {
+    "/lunch": 6,
+    "/lunch/1": 2 },
+  "id": "charly/lunch/1",
+  "op": "grab",
+  "resource": "/lunch/1",
+  "status": "wait" }
+== After grab lunch/1 by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+grab you/lunch
+{
+  "data": {
+    "/lunch": 3 },
+  "id": "you/lunch",
+  "op": "grab",
+  "resource": "/lunch",
+  "status": "wait" }
+== After grab lunch by you:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch/2": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "you/lunch",
+  "op": "dump",
+  "resource": "/lunch",
+  "status": "ok" }
+==
+release me/lunch/2
+{
+  "data": 1,
+  "id": "you/lunch/2",
+  "op": "release",
+  "resource": "/lunch/2",
+  "status": "ok" }
+== After release lunch/2 by you:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "you/lunch/2": timestamp },
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "you/lunch/2",
+  "op": "dump",
+  "resource": "/lunch/2",
+  "status": "ok" }
+==
+grab me/lunch/1
+{
+  "data": {
+    "/lunch": 2,
+    "/lunch/1": 1 },
+  "id": "me/lunch/1",
+  "op": "grab",
+  "resource": "/lunch/1",
+  "status": "wait" }
+== After grab lunch/1 by me:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "you/lunch/2": timestamp },
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "me/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+grab charly/lunch/2
+{
+  "data": {
+    "/lunch": 4,
+    "/lunch/2": 1 },
+  "id": "charly/lunch/2",
+  "op": "grab",
+  "resource": "/lunch/2",
+  "status": "wait" }
+== After grab lunch/2 by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "you/lunch/2": timestamp },
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch/2",
+  "op": "dump",
+  "resource": "/lunch/2",
+  "status": "ok" }
+==
+release me/lunch
+{
+  "data": 1,
+  "id": "me/lunch",
+  "op": "release",
+  "resource": "/lunch",
+  "status": "ok" }
+== After release lunch by me:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "you/lunch/2": timestamp },
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "me/lunch",
+  "op": "dump",
+  "resource": "/lunch",
+  "status": "ok" }
+==
+grab charly/lunch/2
+{
+  "data": {
+    "/lunch": 3,
+    "/lunch/2": 1 },
+  "id": "charly/lunch/2",
+  "op": "grab",
+  "resource": "/lunch/2",
+  "status": "wait" }
+== After grab lunch/2 by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "you/lunch/2": timestamp },
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ],
+    "/lunch/2": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/2": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch/2",
+  "op": "dump",
+  "resource": "/lunch/2",
+  "status": "ok" }
+==
+release charly/lunch/2
+{
+  "data": 1,
+  "id": "charly/lunch/2",
+  "op": "release",
+  "resource": "/lunch/2",
+  "status": "ok" }
+== After release lunch/2 by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch/2",
+  "op": "dump",
+  "resource": "/lunch/2",
+  "status": "ok" }
+==
+grab me/lunch/1
+{
+  "data": {
+    "/lunch": 1,
+    "/lunch/1": 1 },
+  "id": "me/lunch/1",
+  "op": "grab",
+  "resource": "/lunch/1",
+  "status": "ok" }
+== After grab lunch/1 by me:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "me/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+release charly/lunch
+{
+  "data": 0,
+  "id": "charly/lunch",
+  "op": "release",
+  "resource": "/lunch",
+  "status": "ok" }
+== After release lunch by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch",
+  "op": "dump",
+  "resource": "/lunch",
+  "status": "ok" }
+==
+release charly/lunch/1
+{
+  "data": 0,
+  "id": "charly/lunch/1",
+  "op": "release",
+  "resource": "/lunch/1",
+  "status": "ok" }
+== After release lunch/1 by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": true },
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {},
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "me/lunch/1": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {},
+        "shared": false } ] },
+  "id": "charly/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+release me/lunch/1
+{
+  "data": 3,
+  "id": "me/lunch/1",
+  "op": "release",
+  "resource": "/lunch/1",
+  "status": "ok" }
+== After release lunch/1 by me:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {},
+        "shared": true } ] },
+  "id": "me/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+grab charly/lunch/1
+{
+  "data": {
+    "/lunch": 4,
+    "/lunch/1": 1 },
+  "id": "charly/lunch/1",
+  "op": "grab",
+  "resource": "/lunch/1",
+  "status": "wait" }
+== After grab lunch/1 by charly:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "charly/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+grab you/dinner
+{
+  "data": {
+    "/dinner": 2 },
+  "id": "you/dinner",
+  "op": "grab",
+  "resource": "/dinner",
+  "status": "wait" }
+== After grab dinner by you:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "me/dinner": timestamp },
+        "shared": false },
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "you/dinner",
+  "op": "dump",
+  "resource": "/dinner",
+  "status": "ok" }
+==
+release me/dinner
+{
+  "data": 1,
+  "id": "me/dinner",
+  "op": "release",
+  "resource": "/dinner",
+  "status": "ok" }
+== After release dinner by me:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "me/dinner",
+  "op": "dump",
+  "resource": "/dinner",
+  "status": "ok" }
+==
+grab you/dinner
+{
+  "data": {
+    "/dinner": 1 },
+  "id": "you/dinner",
+  "op": "grab",
+  "resource": "/dinner",
+  "status": "ok" }
+== After grab dinner by you:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "you/dinner",
+  "op": "dump",
+  "resource": "/dinner",
+  "status": "ok" }
+==
+shutdown should fail
+{
+  "data": 0,
+  "id": "any/all",
+  "op": "shutdown",
+  "resource": "/all",
+  "status": "wait" }
+== After shutdown all by any:
+{
+  "data": {
+    "/dinner": [
+      {
+        "exes": {},
+        "owners": {
+          "you/dinner": timestamp },
+        "shared": false } ],
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "any/all",
+  "op": "dump",
+  "resource": "/all",
+  "status": "ok" }
+==
+release you/dinner
+{
+  "data": 1,
+  "id": "you/dinner",
+  "op": "release",
+  "resource": "/dinner",
+  "status": "ok" }
+== After release dinner by you:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "you/dinner",
+  "op": "dump",
+  "resource": "/dinner",
+  "status": "ok" }
+==
+shutdown should fail
+{
+  "data": 0,
+  "id": "any/all",
+  "op": "shutdown",
+  "resource": "/all",
+  "status": "wait" }
+== After shutdown all by any:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": true } ],
+    "/lunch/1": [
+      {
+        "exes": {},
+        "owners": {
+          "charly/lunch/1": timestamp },
+        "shared": false } ] },
+  "id": "any/all",
+  "op": "dump",
+  "resource": "/all",
+  "status": "ok" }
+==
+release charly/lunch/1
+{
+  "data": 1,
+  "id": "charly/lunch/1",
+  "op": "release",
+  "resource": "/lunch/1",
+  "status": "ok" }
+== After release lunch/1 by charly:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp },
+        "owners": {},
+        "shared": true } ] },
+  "id": "charly/lunch/1",
+  "op": "dump",
+  "resource": "/lunch/1",
+  "status": "ok" }
+==
+release you/lunch/1
+{
+  "data": 0,
+  "id": "you/lunch/2",
+  "op": "release",
+  "resource": "/lunch/2",
+  "status": "ok" }
+== After release lunch/2 by you:
+{
+  "data": {
+    "/lunch": [
+      {
+        "exes": {},
+        "owners": {
+          "you/lunch": timestamp },
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/2": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true },
+      {
+        "exes": {
+          "charly/lunch": timestamp },
+        "owners": {},
+        "shared": false },
+      {
+        "exes": {
+          "charly/lunch/1": timestamp,
+          "you/lunch/2": timestamp },
+        "owners": {},
+        "shared": true } ] },
+  "id": "you/lunch/2",
+  "op": "dump",
+  "resource": "/lunch/2",
+  "status": "ok" }
+==
+release you/lunch
+{
+  "data": 4,
+  "id": "you/lunch",
+  "op": "release",
+  "resource": "/lunch",
+  "status": "ok" }
+== After release lunch by you:
+{
+  "data": {},
+  "id": "you/lunch",
+  "op": "dump",
+  "resource": "/lunch",
+  "status": "ok" }
+==
+shutdown should now work
+{
+  "data": 0,
+  "id": "any/all",
+  "op": "shutdown",
+  "resource": "/all",
+  "status": "ok" }
+== After shutdown all by any:
+==

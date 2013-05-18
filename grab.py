@@ -9,6 +9,7 @@ import urllib2
 import time
 import sys
 import os
+import json
 
 GRAB_URL = 'http://127.0.0.1:1337/'
 SLEEP = 30.0       # seconds
@@ -74,59 +75,6 @@ Options are:
     else:
         sys.exit(0)
 
-# Quick and dirty json rendering to avoid dependency on possibly missing python
-# modules.
-
-def parse(string):
-    true = True
-    false = False
-    null = None
-    return eval(string.strip())
-
-def render(x, indent=0):
-    if type(x) == type(""):
-        return '"'+x.replace("\\", "\\\\")\
-                    .replace("\"", "\\\"")\
-                    .replace("\b", "\\b")\
-                    .replace("\f", "\\f")\
-                    .replace("\v", "\\v")\
-                    .replace("\r", "\\r")\
-                    .replace("\t", "\\t")\
-                    .replace("\n", "\\n")+'"'
-
-    if type(x) == type({}):
-        keys = x.keys()
-        if indent:
-            keys.sort()
-            content = (",\n"+' '*indent).join(['"'+str(key)+'": '+render(x[key], indent+2) for key in keys])
-            if content:
-                return "{\n"+' '*indent+content+' }'
-            else:
-                return "{}"
-        else:
-            return '{'+",".join(['"'+str(key)+'":'+render(x[key]) for key in keys])+'}'
-
-    if type(x) == type([]) or type(x) == type(()):
-        if indent:
-            content = (",\n"+' '*indent).join([render(val, indent+2) for val in x])
-            if content:
-                return "[\n"+' '*indent+content+' ]'
-            else:
-                return "[]"
-        else:
-            return '['+','.join([render(val) for val in x])+']'
-
-    if type(x) == type(2):
-        return str(x)
-    if x == None:
-        return 'null'
-    if x == True:
-        return 'true'
-    if x == False:
-        return 'false'
-    
-    return render("%r" % x)
-
 class Grab:
     def __init__(self, owner, url=GRAB_URL, sleep=SLEEP, max_attempts=MAX_ATTEMPTS, verbose=False):
         self.url = url
@@ -149,7 +97,7 @@ class Grab:
             return None
         if req:
             try:
-                response = parse(req.read())
+                response = json.parse(req.read())
             except:
                 if self.verbose:
                     print >>sys.stderr, "Unable to parse response:", response
@@ -170,7 +118,7 @@ class Grab:
             if keepalive:
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting response to keepalive:"
-                    print >>sys.stderr, render(response, indent=2)
+                    print >>sys.stderr, json.render(response, indent=2)
             else:
                 if response is None:
                     return None
@@ -178,7 +126,7 @@ class Grab:
                     return response
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting non-ok:"
-                    print >>sys.stderr, render(response, indent=2)
+                    print >>sys.stderr, json.render(response, indent=2)
             time.sleep(self.sleep)
         return None
 
@@ -259,7 +207,7 @@ if __name__ == '__main__':
         if result is None:
             print >>sys.stderr, "None"
         else:
-            print >>sys.stderr, render(result, indent=2)
+            print >>sys.stderr, json.render(result, indent=2)
 
     if op == 'peek' and result is not None:
         print result.get('data', {}).get('id')

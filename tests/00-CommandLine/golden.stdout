@@ -1,0 +1,18 @@
+--help=true
+--timestamp=timestamp
+--version=VERSION
+--debug=false
+--port=1337
+--host=127.0.0.1
+--gc_interval=10000
+--timeout=60000
+Unrecognized argument: --unknown-option
+Unrecognized argument: --another-unknown-option
+--help=false
+--timestamp=timestamp
+--version=VERSION
+--debug=true
+--port=1337
+--host=127.0.0.1
+--gc_interval=10000
+--timeout=60000
