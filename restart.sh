@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Created by Christian Goetze - http://blog.fortified-bikesheds.com/ - and released under
+# the terms of the CC0 1.0 Universal legal code:
+# 
+# http://creativecommons.org/publicdomain/zero/1.0/legalcode
+
 here="$(dirname "$0")"
 logdir="$here"  # "$here/../log" is a good option too...
 mkdir -p "$logdir"
