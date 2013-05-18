@@ -54,6 +54,7 @@ Sample Usage
 ------------
 
 First ensure you have python and node installed, then:
+
 1. start the service by running ./restart.sh
 2. optionally, in a separate window, tail -f ./log
 3. run the sample script: ./sample.sh
