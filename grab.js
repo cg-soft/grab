@@ -20,8 +20,15 @@ var config = { 'help': false,
                'timeout':       60000   //  1 minute
              };
 
+/* Note that we spend the time to do server validation of
+ * the owner and resource parameters, because otherwise it
+ * is easy to create confusion by using "smart" owner names.
+ * We do use a trick to append the resource to the owner name
+ * in order to uniquely identify locks. This could be perverted
+ * if we allowed "/" in an owner name.
+ */
 var resource_regexp = new RegExp('^[a-z0-9A-Z/]+$');
-var id_regexp = new RegExp('^[a-z0-9A-Z]+$');
+var owner_regexp = new RegExp('^[a-z0-9A-Z]+$');
 
 var errors = 0;
 process.argv.forEach(function (val, index, array) {
@@ -340,16 +347,16 @@ http.createServer(function (req, res) {
     if (config.debug) console.log('"resource" contains illegal characters: "'+resource+'"');
     res.writeHead(400, '"resource" contains illegal characters: "'+resource+'"');
     res.end();
-  } else if (!id_regexp.test(id)) {
+  } else if (!owner_regexp.test(id)) {
     if (config.debug) console.log('"id" contains illegal characters: "'+id+'"');
-    res.writeHead(400, '"resource" contains illegal characters: "'+resource+'"');
+    res.writeHead(400, '"id" contains illegal characters: "'+resource+'"');
     res.end();
   } else if (op in action) {
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.end(action[op](op, id+resource, resource));
   } else {
     if (config.debug) console.log('Not a recognized operation: '+op);
-    res.writeHead(400, '"resource" contains illegal characters: "'+resource+'"');
+    res.writeHead(400, 'Not a recognized operation: '+op);
     res.end();
   }
 
