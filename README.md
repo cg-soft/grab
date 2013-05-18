@@ -43,6 +43,12 @@ Wrapper script to cleanly restart the service.
   </td>
  </tr>
  <tr>
+  <td>runtest.sh</td>
+  <td>
+Unit test runner. 
+  </td>
+ </tr>
+ <tr>
   <td>sample.sh</td>
   <td>
 Sample grab() and release() shell functions using the locking service with keep-alive process.
