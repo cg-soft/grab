@@ -26,6 +26,7 @@ begin_test BasicQueuing
         curl "http://$host":"$port/$resource""?op=$op""&id=$id" 2>/dev/null\
             | ./json.py test\
             | sed -e 's/^\(          "[^"]*"\): [1-9][0-9]*/\1: timestamp/'\
+                  -e 's/\("uptime"\): [1-9][0-9]*/\1: uptime/'\
                   -e 's/\("timestamp"\): [1-9][0-9]*/\1: timestamp/'\
                   -e 's/\("port"\): "[1-9][0-9]*"/\1: "port"/'\
            >> "$test_path"/actual.responses

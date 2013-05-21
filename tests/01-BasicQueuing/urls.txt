@@ -31,4 +31,5 @@
   charly release  lunch/1   release charly/lunch/1
   you    release  lunch/2   release you/lunch/1
   you    release  lunch     release you/lunch
+  any    stats    all       stats
   any    shutdown all       shutdown should now work

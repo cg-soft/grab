@@ -1701,6 +1701,41 @@ release you/lunch
   "resource": "/lunch",
   "status": "ok" }
 ==
+stats
+{
+  "data": {
+    "by_lock": {
+      "/dinner": 2,
+      "/lunch": 8,
+      "/lunch/1": 3,
+      "/lunch/2": 2 },
+    "by_owner": {
+      "charly/lunch": 1,
+      "charly/lunch/1": 4,
+      "charly/lunch/2": 2,
+      "me/dinner": 1,
+      "me/lunch": 1,
+      "me/lunch/1": 2,
+      "you/dinner": 1,
+      "you/lunch": 1,
+      "you/lunch/2": 2 },
+    "max_queue_length": 6,
+    "max_queue_owner": "charly/lunch/1",
+    "max_queue_resource": "/lunch",
+    "total": 15,
+    "uptime": uptime },
+  "id": "any/all",
+  "op": "stats",
+  "resource": "/all",
+  "status": "ok" }
+== After stats all by any:
+{
+  "data": {},
+  "id": "any/all",
+  "op": "dump",
+  "resource": "/all",
+  "status": "ok" }
+==
 shutdown should now work
 {
   "data": 0,

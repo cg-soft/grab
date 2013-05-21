@@ -115,5 +115,7 @@ Removing you/lunch/2,charly/lunch/2 from /lunch
 Removing charly/lunch from /lunch
 Removing charly/lunch/1,you/lunch/2 from /lunch
 GET: op=dump; id=you; resource=/lunch
+GET: op=stats; id=any; resource=/all
+GET: op=dump; id=any; resource=/all
 GET: op=shutdown; id=any; resource=/all
 Shutting down

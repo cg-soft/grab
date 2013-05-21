@@ -20,6 +20,14 @@ var config = { 'help': false,
                'timeout':       60000   //  1 minute
              };
 
+var stats = { 'uptime': 0,
+              'total': 0,
+              'max_queue_length': 0,
+              'max_queue_resource': null,
+              'max_queue_owner': null,
+              'by_owner': {},
+              'by_lock': {} };
+
 /* Note that we spend the time to do server validation of
  * the owner and resource parameters, because otherwise it
  * is easy to create confusion by using "smart" owner names.
@@ -29,6 +37,10 @@ var config = { 'help': false,
  */
 var resource_regexp = new RegExp('^[a-z0-9A-Z/]+$');
 var owner_regexp = new RegExp('^[a-z0-9A-Z]+$');
+
+var queues = {};
+var shutdown_pending = false;
+var shutdown = false;
 
 var errors = 0;
 process.argv.forEach(function (val, index, array) {
@@ -57,6 +69,26 @@ function keys(obj)
   var keys = [];
   for (var prop in obj) if (obj.hasOwnProperty(prop)) keys.push(prop);
   return keys;
+}
+
+function register_stats(resource, owner)
+{
+  stats.total ++;
+  if (owner in stats.by_owner) {
+    stats.by_owner[owner]++;
+  } else {
+    stats.by_owner[owner] = 1;
+  }
+  if (resource in stats.by_lock) {
+    stats.by_lock[resource]++;
+  } else {
+    stats.by_lock[resource] = 1;
+  }
+  if (queues[resource].getLength() > stats.max_queue_length) {
+    stats.max_queue_length = queues[resource].getLength();
+    stats.max_queue_resource = resource;
+    stats.max_queue_owner = owner;
+  }
 }
 
 /*
@@ -136,6 +168,7 @@ Queue = function (){
           return 0;
         }
         if (config.debug) console.log("Merging "+owner+" at end of "+resource);
+        register_stats(resource, owner);
         queue[i].owners[owner] = timestamp;
         return (i - offset + 1);
       }
@@ -147,6 +180,7 @@ Queue = function (){
       var q = { "owners": {}, "exes": {}, "shared": shared };
       q.owners[owner] = timestamp;
       queue.push(q);
+      register_stats(resource, owner);
     }
     return queue.length - offset;
   }
@@ -219,10 +253,6 @@ Queue = function (){
 }
 
 
-var queues = {};
-var shutdown_pending = false;
-var shutdown = false;
-
 function purge(resource) {
   var purged = 0;
   if (resource in queues) {
@@ -263,6 +293,11 @@ function parent_of(str)
 }
 
 var action = {
+  'stats': function (op, id, resource) {
+    var now = new Date().getTime();
+    stats.uptime = now - config.timestamp;
+    return response(op, id, resource, 'ok', stats);
+  },
   'grab': function (op, id, resource) {
     var pos = 0;
     var locks = {};

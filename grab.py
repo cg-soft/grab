@@ -46,6 +46,9 @@ Operations are:
 `peek'
    Check who is hogging the resource.
 
+`stats'
+   Dump statistics
+
 `shutdown'
    Initiate soft shutdown. All new requests will be denied, all
    the existing requests will be allowed to time out or to be 
@@ -169,7 +172,7 @@ if __name__ == '__main__':
             if arg.startswith("--"):
                 usage("Unknown option: %s." % arg)
         if op is None:
-            if arg in ('peek', 'grab', 'keepalive', 'release', 'shutdown', 'dump', 'config'):
+            if arg in ('peek', 'grab', 'keepalive', 'release', 'shutdown', 'dump', 'stats', 'config'):
                 op = arg
             else:
                 usage("Unknown operation: %s." % arg)
@@ -203,7 +206,7 @@ if __name__ == '__main__':
                   max_attempts=max_attempts,
                   verbose=verbose).poll(op, resource, keepalive)
 
-    if verbose or op in ('config', 'dump'):
+    if verbose or op in ('config', 'stats', 'dump'):
         if result is None:
             print >>sys.stderr, "None"
         else:
