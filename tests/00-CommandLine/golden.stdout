@@ -1,5 +1,6 @@
 --help=true
 --timestamp=timestamp
+--hash=
 --version=VERSION
 --debug=false
 --port=1337
@@ -10,6 +11,7 @@ Unrecognized argument: --unknown-option
 Unrecognized argument: --another-unknown-option
 --help=false
 --timestamp=timestamp
+--hash=
 --version=VERSION
 --debug=true
 --port=1337

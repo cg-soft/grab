@@ -3,6 +3,7 @@
   "data": {
     "debug": true,
     "gc_interval": "1000000",
+    "hash": "",
     "help": false,
     "host": "127.0.0.1",
     "port": "port",

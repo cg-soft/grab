@@ -90,7 +90,7 @@ class Grab:
         except:
              self.ppid = None
 
-    def get(self, op, resource):
+    def get(self, op, resource=""):
         url = self.url + resource + '?id=%s&op=%s' % (self.owner, op)
         try:
             req = urllib2.urlopen(url)
@@ -144,6 +144,7 @@ if __name__ == '__main__':
     grab_url = GRAB_URL
     op = None
     resource = None
+    sha1sum = None
     for arg in sys.argv[1:]:
         if parse_options:
             if arg in ("-h", "--help"):
@@ -153,6 +154,9 @@ if __name__ == '__main__':
                 continue
             if arg in ("--verbose",):
                 verbose = True
+                continue
+            if arg.startswith("--hash="):
+                sha1sum = arg[len("--hash="):]
                 continue
             if arg.startswith("--url="):
                 grab_url = arg[len("--url="):]
@@ -200,11 +204,23 @@ if __name__ == '__main__':
     else:
         keepalive = False
 
-    result = Grab(owner=owner,
-                  url=grab_url,
-                  sleep=sleep,
-                  max_attempts=max_attempts,
-                  verbose=verbose).poll(op, resource, keepalive)
+    grab = Grab(owner=owner,
+                url=grab_url,
+                sleep=sleep,
+                max_attempts=max_attempts,
+                verbose=verbose)
+
+    if op == 'shutdown':
+        config = grab.get("config")    
+        if config is not None and sha1sum is not None:
+            old_sha1sum = config.get('data',{}).get('hash')
+            if verbose:
+                print >>sys.stderr, "Old sha1sum: %s\nNew sha1sum: %s" % (old_sha1sum, sha1sum)
+            if old_sha1sum == sha1sum:
+                print "No restart required, running service matches specified --hash string"
+                sys.exit(0)
+
+    result = grab.poll(op, resource, keepalive)
 
     if verbose or op in ('config', 'stats', 'dump'):
         if result is None:

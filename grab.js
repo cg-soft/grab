@@ -12,6 +12,7 @@ var url = require('url');
 
 var config = { 'help': false,
                'timestamp': new Date().getTime(),
+               'hash': '',
                'version': "VERSION",
                'debug': false,
                'port': 1337,
