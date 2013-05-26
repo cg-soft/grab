@@ -67,3 +67,8 @@ First ensure you have python and node installed, then:
 4. try more experiments by using grab.py
 5. stop the service: ./grab.py shutdown
 6. inspect the log file: 
+
+See Also
+--------
+
+http://blog.fortified-bikesheds.com/2013/05/reinventing-wheel-hierarchical.html
