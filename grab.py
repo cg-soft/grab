@@ -10,6 +10,7 @@ import time
 import sys
 import os
 import json
+import subprocess
 
 GRAB_URL = 'http://127.0.0.1:1337/'
 SLEEP = 30.0       # seconds
@@ -21,8 +22,7 @@ def usage(error=""):
 %s <op> [<resource>] [<options>]
 
 Poll lock service to obtain a resource. The resource can be 
-any pathname using "/" as a separator and having alphanumeric
-component strings. 
+any alphanumeric string no longer than 100 characters.
 
 Operations are:
 
@@ -59,14 +59,30 @@ Options are:
 
 --help
    Displays this text
---owner
-   Owner of the request
+
+--hash
+   Used in conjunction with "shutdown" to check whether a shutdown
+   is required. Specify the sha1sum or md5sum of the new grab.js file,
+   and this will be compared to the value stored in the config of the
+   running grab.js daemon.
+
 --max-attempts
    How often to attempt a request.
+
+--owner
+   Owner of the request
+
+--ppid
+   Parent process id. On unix systems, this will be determined automatically.
+   On windows systems, it should be passed in, since it is easier to find out
+   that way.
+
 --sleep=<time>
    How long to sleep between polls
+
 --url
    Url of lock service
+
 --verbose
    Show all requests and responses
 
@@ -78,17 +94,30 @@ Options are:
     else:
         sys.exit(0)
 
+def IsProcessRunning(processId):
+    # On Windows, we need to do this....
+    ps = subprocess.Popen('tasklist.exe /NH /FI "PID eq %d"' % processId, shell=True, stdout=subprocess.PIPE)
+    output = ps.stdout.read()
+    ps.stdout.close()
+    ps.wait()
+    if str(processId) in output:
+       return True
+    return False
+
 class Grab:
-    def __init__(self, owner, url=GRAB_URL, sleep=SLEEP, max_attempts=MAX_ATTEMPTS, verbose=False):
+    def __init__(self, owner, url=GRAB_URL, sleep=SLEEP, max_attempts=MAX_ATTEMPTS, verbose=False, ppid=None):
         self.url = url
         self.owner = owner
         self.sleep = sleep
         self.max_attempts=MAX_ATTEMPTS
         self.verbose = verbose
-        try:
-             self.ppid = os.getppid()
-        except:
-             self.ppid = None
+        if ppid is None:
+            try:
+                self.ppid = os.getppid()
+            except:
+                self.ppid = None
+        else:
+            self.ppid = ppid
 
     def get(self, op, resource=""):
         url = self.url + resource + '?id=%s&op=%s' % (self.owner, op)
@@ -100,7 +129,7 @@ class Grab:
             return None
         if req:
             try:
-                response = json.parse(req.read())
+                response = rbhjson.parse(req.read())
             except:
                 if self.verbose:
                     print >>sys.stderr, "Unable to parse response:", response
@@ -115,13 +144,22 @@ class Grab:
         while keepalive or attempts > 0:
             attempts -= 1
             # If invoking process dies, commit suicide
-            if self.ppid is not None and os.getppid() != self.ppid:
-                sys.exit()
+            if self.ppid is not None:
+                if os.name == 'nt':
+                    # On windows, use the windows process check
+                    if not IsProcessRunning(self.ppid):
+                        if self.verbose:
+                            print >>sys.stderr, "Parent process died, shutting down"
+                        sys.exit()
+                elif os.getppid() != self.ppid:
+                    if self.verbose:
+                        print >>sys.stderr, "Parent process died, shutting down"
+                    sys.exit()
             response = self.get(op, resource)
             if keepalive:
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting response to keepalive:"
-                    print >>sys.stderr, json.render(response, indent=2)
+                    print >>sys.stderr, rbhjson.render(response, True)
             else:
                 if response is None:
                     return None
@@ -129,7 +167,7 @@ class Grab:
                     return response
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting non-ok:"
-                    print >>sys.stderr, json.render(response, indent=2)
+                    print >>sys.stderr, rbhjson.render(response, True)
             time.sleep(self.sleep)
         return None
 
@@ -145,6 +183,7 @@ if __name__ == '__main__':
     op = None
     resource = None
     sha1sum = None
+    ppid = None
     for arg in sys.argv[1:]:
         if parse_options:
             if arg in ("-h", "--help"):
@@ -163,6 +202,12 @@ if __name__ == '__main__':
                 continue
             if arg.startswith("--max-attempts="):
                 max_attempts = arg[len("--max-attempts="):]
+                continue
+            if arg.startswith("--ppid="):
+                try:
+                    ppid = int(arg[len("--ppid="):])
+                except:
+                    usage("--ppid=<n> must be an integer")
                 continue
             if arg.startswith("--sleep="):
                 sleep = arg[len("--sleep="):]
@@ -207,6 +252,7 @@ if __name__ == '__main__':
     grab = Grab(owner=owner,
                 url=grab_url,
                 sleep=sleep,
+                ppid=ppid,
                 max_attempts=max_attempts,
                 verbose=verbose)
 
@@ -226,7 +272,7 @@ if __name__ == '__main__':
         if result is None:
             print >>sys.stderr, "None"
         else:
-            print >>sys.stderr, json.render(result, indent=2)
+            print >>sys.stderr, rbhjson.render(result, True)
 
     if op == 'peek' and result is not None:
         print result.get('data', {}).get('id')

@@ -13,20 +13,23 @@ grab()
   local resource="$1"
   echo "Waiting for $resource"
   if "$here"/grab.py\
+     --ppid=$$\
      --verbose\
      --owner="$owner"\
      grab "$resource"
   then
     echo Grabbed - Starting keepalive
     "$here"/grab.py\
+     --ppid=$$\
      --verbose\
      --owner="$owner"\
      keepalive "$resource" >"$here"/keepalive.log 2>&1 &
      export keepalive_pid=$!
   elif "$here"/grab.py\
-    --verbose\
-    --owner="$owner"\
-    dump
+     --ppid=$$\
+     --verbose\
+     --owner="$owner"\
+     dump
   then
     echo "Resource $resource is being hogged"
     return 1
@@ -56,6 +59,7 @@ release()
   fi
   rm -f "$here"/keepalive.log
   if "$here"/grab.py\
+     --ppid=$$\
      --verbose\
      --owner="$owner"\
      release "$resource"
