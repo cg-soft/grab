@@ -1,0 +1,789 @@
+
+GET http://127.0.0.1:1337/any?id=any&op=config
+{
+  "data": {
+    "debug": true,
+    "gc_interval": "1000000",
+    "hash": "",
+    "help": false,
+    "host": "127.0.0.1",
+    "port": "port",
+    "timeout": "1000000",
+    "timestamp": timestamp,
+    "version": "VERSION"
+  },
+  "id": "any/any",
+  "op": "config",
+  "resource": "/any",
+  "status": "ok"
+}
+== After config any by any:
+GET http://127.0.0.1:1337/?id=any&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {},
+    "stats": {
+      "by_lock": {},
+      "by_owner": {},
+      "max_queue_length": 0,
+      "max_queue_owner": null,
+      "max_queue_resource": null,
+      "total": 0,
+      "uptime": 0
+    }
+  },
+  "id": "any/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+grab me/lunch/1
+GET http://127.0.0.1:1337/lunch/1?id=me&op=grab
+{
+  "data": {
+    "/lunch": 1,
+    "/lunch/1": 1
+  },
+  "id": "me/lunch/1",
+  "op": "grab",
+  "resource": "/lunch/1",
+  "status": "ok"
+}
+== After grab lunch/1 by me:
+GET http://127.0.0.1:1337/?id=me&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {
+      "/lunch": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
+      "/lunch/1": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
+    "stats": {
+      "by_lock": {
+        "/lunch": 1,
+        "/lunch/1": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 2,
+      "uptime": 0
+    }
+  },
+  "id": "me/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+grab you/lunch/2
+GET http://127.0.0.1:1337/lunch/2?id=you&op=grab
+{
+  "data": {
+    "/lunch": 1,
+    "/lunch/2": 1
+  },
+  "id": "you/lunch/2",
+  "op": "grab",
+  "resource": "/lunch/2",
+  "status": "ok"
+}
+== After grab lunch/2 by you:
+GET http://127.0.0.1:1337/?id=you&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {
+      "/lunch": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp,
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        }
+      ],
+      "/lunch/1": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
+      "/lunch/2": [
+        {
+          "exes": {},
+          "owners": {
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": 0
+    }
+  },
+  "id": "you/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+release me/lunch/2
+GET http://127.0.0.1:1337/lunch/2?id=you&op=release
+{
+  "data": 1,
+  "id": "you/lunch/2",
+  "op": "release",
+  "resource": "/lunch/2",
+  "status": "ok"
+}
+== After release lunch/2 by you:
+GET http://127.0.0.1:1337/?id=you&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {
+      "/lunch": [
+        {
+          "exes": {
+            "you/lunch/2": timestamp
+          },
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
+      "/lunch/1": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": 0
+    }
+  },
+  "id": "you/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+release me/lunch/1
+GET http://127.0.0.1:1337/lunch/1?id=me&op=release
+{
+  "data": 2,
+  "id": "me/lunch/1",
+  "op": "release",
+  "resource": "/lunch/1",
+  "status": "ok"
+}
+== After release lunch/1 by me:
+GET http://127.0.0.1:1337/?id=me&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {},
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": 0
+    }
+  },
+  "id": "me/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+stats
+GET http://127.0.0.1:1337/all?id=any&op=stats
+{
+  "data": {
+    "by_lock": {
+      "/lunch": 2,
+      "/lunch/1": 1,
+      "/lunch/2": 1
+    },
+    "by_owner": {
+      "me/lunch/1": 2,
+      "you/lunch/2": 2
+    },
+    "max_queue_length": 1,
+    "max_queue_owner": "me/lunch/1",
+    "max_queue_resource": "/lunch/1",
+    "total": 4,
+    "uptime": uptime
+  },
+  "id": "any/all",
+  "op": "stats",
+  "resource": "/all",
+  "status": "ok"
+}
+== After stats all by any:
+GET http://127.0.0.1:1337/?id=any&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {},
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": uptime
+    }
+  },
+  "id": "any/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+shutdown should now work
+GET http://127.0.0.1:1337/?id=any&op=config
+GET http://127.0.0.1:1337/all?id=any&op=shutdown
+{
+  "data": 0,
+  "id": "any/all",
+  "op": "shutdown",
+  "resource": "/all",
+  "status": "ok"
+}
+== After shutdown all by any:
+GET http://127.0.0.1:1337/?id=any&op=dump
+Failed to urlopen http://127.0.0.1:1337/?id=any&op=dump
+None
+==
+== Now with our own json.py ==
+
+GET http://127.0.0.1:1337/any?id=any&op=config
+{
+  "data": {
+    "debug": true,
+    "gc_interval": "1000000",
+    "hash": "",
+    "help": false,
+    "host": "127.0.0.1",
+    "port": "port",
+    "timeout": "1000000",
+    "timestamp": timestamp,
+    "version": "VERSION"
+  },
+  "id": "any/any",
+  "op": "config",
+  "resource": "/any",
+  "status": "ok"
+}
+== After config any by any:
+GET http://127.0.0.1:1337/?id=any&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {},
+    "stats": {
+      "by_lock": {},
+      "by_owner": {},
+      "max_queue_length": 0,
+      "max_queue_owner": null,
+      "max_queue_resource": null,
+      "total": 0,
+      "uptime": 0
+    }
+  },
+  "id": "any/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+grab me/lunch/1
+GET http://127.0.0.1:1337/lunch/1?id=me&op=grab
+{
+  "data": {
+    "/lunch": 1,
+    "/lunch/1": 1
+  },
+  "id": "me/lunch/1",
+  "op": "grab",
+  "resource": "/lunch/1",
+  "status": "ok"
+}
+== After grab lunch/1 by me:
+GET http://127.0.0.1:1337/?id=me&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {
+      "/lunch": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
+      "/lunch/1": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
+    "stats": {
+      "by_lock": {
+        "/lunch": 1,
+        "/lunch/1": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 2,
+      "uptime": 0
+    }
+  },
+  "id": "me/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+grab you/lunch/2
+GET http://127.0.0.1:1337/lunch/2?id=you&op=grab
+{
+  "data": {
+    "/lunch": 1,
+    "/lunch/2": 1
+  },
+  "id": "you/lunch/2",
+  "op": "grab",
+  "resource": "/lunch/2",
+  "status": "ok"
+}
+== After grab lunch/2 by you:
+GET http://127.0.0.1:1337/?id=you&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {
+      "/lunch": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp,
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        }
+      ],
+      "/lunch/1": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
+      "/lunch/2": [
+        {
+          "exes": {},
+          "owners": {
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": 0
+    }
+  },
+  "id": "you/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+release me/lunch/2
+GET http://127.0.0.1:1337/lunch/2?id=you&op=release
+{
+  "data": 1,
+  "id": "you/lunch/2",
+  "op": "release",
+  "resource": "/lunch/2",
+  "status": "ok"
+}
+== After release lunch/2 by you:
+GET http://127.0.0.1:1337/?id=you&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {
+      "/lunch": [
+        {
+          "exes": {
+            "you/lunch/2": timestamp
+          },
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
+      "/lunch/1": [
+        {
+          "exes": {},
+          "owners": {
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": 0
+    }
+  },
+  "id": "you/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+release me/lunch/1
+GET http://127.0.0.1:1337/lunch/1?id=me&op=release
+{
+  "data": 2,
+  "id": "me/lunch/1",
+  "op": "release",
+  "resource": "/lunch/1",
+  "status": "ok"
+}
+== After release lunch/1 by me:
+GET http://127.0.0.1:1337/?id=me&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {},
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": 0
+    }
+  },
+  "id": "me/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+stats
+GET http://127.0.0.1:1337/all?id=any&op=stats
+{
+  "data": {
+    "by_lock": {
+      "/lunch": 2,
+      "/lunch/1": 1,
+      "/lunch/2": 1
+    },
+    "by_owner": {
+      "me/lunch/1": 2,
+      "you/lunch/2": 2
+    },
+    "max_queue_length": 1,
+    "max_queue_owner": "me/lunch/1",
+    "max_queue_resource": "/lunch/1",
+    "total": 4,
+    "uptime": uptime
+  },
+  "id": "any/all",
+  "op": "stats",
+  "resource": "/all",
+  "status": "ok"
+}
+== After stats all by any:
+GET http://127.0.0.1:1337/?id=any&op=dump
+{
+  "data": {
+    "config": {
+      "debug": true,
+      "gc_interval": "1000000",
+      "hash": "",
+      "help": false,
+      "host": "127.0.0.1",
+      "port": "port",
+      "timeout": "1000000",
+      "timestamp": timestamp,
+      "version": "VERSION"
+    },
+    "queues": {},
+    "stats": {
+      "by_lock": {
+        "/lunch": 2,
+        "/lunch/1": 1,
+        "/lunch/2": 1
+      },
+      "by_owner": {
+        "me/lunch/1": 2,
+        "you/lunch/2": 2
+      },
+      "max_queue_length": 1,
+      "max_queue_owner": "me/lunch/1",
+      "max_queue_resource": "/lunch/1",
+      "total": 4,
+      "uptime": uptime
+    }
+  },
+  "id": "any/",
+  "op": "dump",
+  "resource": "/",
+  "status": "ok"
+}
+==
+shutdown should now work
+GET http://127.0.0.1:1337/?id=any&op=config
+GET http://127.0.0.1:1337/all?id=any&op=shutdown
+{
+  "data": 0,
+  "id": "any/all",
+  "op": "shutdown",
+  "resource": "/all",
+  "status": "ok"
+}
+== After shutdown all by any:
+GET http://127.0.0.1:1337/?id=any&op=dump
+Failed to urlopen http://127.0.0.1:1337/?id=any&op=dump
+None
+==

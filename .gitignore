@@ -1,0 +1,8 @@
+*.orig
+*.rej
+*.pyc
+actual.*
+log
+log.*
+pid
+patch

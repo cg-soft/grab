@@ -10,8 +10,20 @@ import time
 import sys
 import os
 import re
-import json
 import subprocess
+
+# Use our insecure eval() based json parser if the json module
+# is unavailable.
+try:
+    from json import dumps, loads
+except:
+    from grab_json import dumps, loads
+try:
+    dumps({}, is_this_grab_json=1)
+except:
+    pass
+else:
+    print >>sys.stderr, "WARNING: This uses an insecure json module, please try to install python's standard json module."
 
 GRAB_URL = 'http://127.0.0.1:1337/'
 SLEEP = 30.0       # seconds
@@ -148,7 +160,7 @@ class Grab:
             return None
         if req:
             try:
-                response = rbhjson.parse(req.read())
+                response = loads(req.read())
             except:
                 if self.verbose:
                     print >>sys.stderr, "Unable to parse response:", response
@@ -178,7 +190,7 @@ class Grab:
             if keepalive:
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting response to keepalive:"
-                    print >>sys.stderr, rbhjson.render(response, True)
+                    print >>sys.stderr, dumps(response, indent=2, sort_keys=True, separators=(',',': '))
             else:
                 if response is None:
                     return None
@@ -186,7 +198,7 @@ class Grab:
                     return response
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting non-ok:"
-                    print >>sys.stderr, rbhjson.render(response, True)
+                    print >>sys.stderr, dumps(response, indent=2, sort_keys=True, separators=(',',': '))
             time.sleep(self.sleep)
         return None
 
@@ -306,7 +318,7 @@ if __name__ == '__main__':
         if result is None:
             print >>sys.stderr, "None"
         else:
-            print >>sys.stderr, rbhjson.render(result, True)
+            print >>sys.stderr, dumps(result, indent=2, sort_keys=True, separators=(',',': '))
 
     if op == 'peek' and result is not None:
         print result.get('data', {}).get('id')

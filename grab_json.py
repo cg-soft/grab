@@ -5,16 +5,20 @@
 # 
 # http://creativecommons.org/publicdomain/zero/1.0/legalcode
 
-# Quick and dirty json rendering to avoid dependency on possibly missing python
-# modules.
+# Quick and dirty json rendering.
+#
+# WARNING: this uses eval(), so is not secure and should not be used with untrusted input
+#
+# This module is supplied just in case your python does not have the "json" module, and 
+# it provides the loads() and dumps() functions with similar signatures.
 
-def parse(string):
+def loads(string):
     true = True
     false = False
     null = None
     return eval(string.strip())
 
-def render(x, indent=0):
+def dumps(x, indent=0, sort_keys=False, separators=(',',':'), current_indent=0, is_this_grab_json=0):
     if type(x) == type(""):
         return '"'+x.replace("\\", "\\\\")\
                     .replace("\"", "\\\"")\
@@ -27,25 +31,26 @@ def render(x, indent=0):
 
     if type(x) == type({}):
         keys = x.keys()
-        if indent:
+        if sort_keys:
             keys.sort()
-            content = (",\n"+' '*indent).join(['"'+str(key)+'": '+render(x[key], indent+2) for key in keys])
+        if indent:
+            content = (separators[0]+"\n  "+' '*current_indent).join(['"'+str(key)+'"'+separators[1]+dumps(x[key], indent, sort_keys, separators, current_indent+indent) for key in keys])
             if content:
-                return "{\n"+' '*indent+content+' }'
+                return "{\n  "+' '*current_indent+content+"\n"+' '*current_indent+'}'
             else:
                 return "{}"
         else:
-            return '{'+",".join(['"'+str(key)+'":'+render(x[key]) for key in keys])+'}'
+            return '{'+separators[0].join(['"'+str(key)+'"'+separators[1]+dumps(x[key], 0, sort_keys, separators) for key in keys])+'}'
 
     if type(x) == type([]) or type(x) == type(()):
         if indent:
-            content = (",\n"+' '*indent).join([render(val, indent+2) for val in x])
+            content = (separators[0]+"\n  "+' '*current_indent).join([dumps(val, indent, sort_keys, separators, current_indent+indent) for val in x])
             if content:
-                return "[\n"+' '*indent+content+' ]'
+                return "[\n  "+' '*current_indent+content+"\n"+' '*current_indent+']'
             else:
                 return "[]"
         else:
-            return '['+','.join([render(val) for val in x])+']'
+            return '['+separators[0].join([dumps(val, 0, sort_keys, separators) for val in x])+']'
 
     if type(x) == type(2):
         return str(x)
@@ -56,7 +61,7 @@ def render(x, indent=0):
     if x == False:
         return 'false'
     
-    return render("%r" % x)
+    return dumps("%r" % x, indent, sort_keys, separators, current_indent)
 
 if __name__ == '__main__':
     import sys
@@ -76,11 +81,11 @@ if __name__ == '__main__':
   from a script:
 
     import json
-    print json.render({"some": "json", "structure": ["with", "stuff", "..."]})
+    print json.dumps({"some": "json", "structure": ["with", "stuff", "..."]})
 
 A very simple json renderer.
 """ % sys.argv[0]
         sys.exit(0)
 
-    json = parse(sys.stdin.read())
-    print render(json, indent)
+    json = loads(sys.stdin.read())
+    print dumps(json, indent=indent, sort_keys=True, separators=(',',': '))

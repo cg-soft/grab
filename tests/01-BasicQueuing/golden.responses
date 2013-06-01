@@ -9,11 +9,13 @@
     "port": "port",
     "timeout": "1000000",
     "timestamp": timestamp,
-    "version": "VERSION" },
+    "version": "VERSION"
+  },
   "id": "any/any",
   "op": "config",
   "resource": "/any",
-  "status": "ok" }
+  "status": "ok"
+}
 == After config any by any:
 {
   "data": {
@@ -26,7 +28,8 @@
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {},
     "stats": {
       "by_lock": {},
@@ -35,20 +38,25 @@
       "max_queue_owner": null,
       "max_queue_resource": null,
       "total": 0,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "any/any",
   "op": "dump",
   "resource": "/any",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab me/lunch
 {
   "data": {
-    "/lunch": 1 },
+    "/lunch": 1
+  },
   "id": "me/lunch",
   "op": "grab",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 == After grab lunch by me:
 {
   "data": {
@@ -61,38 +69,50 @@ grab me/lunch
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false } ] },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
-        "/lunch": 1 },
+        "/lunch": 1
+      },
       "by_owner": {
-        "me/lunch": 1 },
+        "me/lunch": 1
+      },
       "max_queue_length": 1,
       "max_queue_owner": "me/lunch",
       "max_queue_resource": "/lunch",
       "total": 1,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/lunch",
   "op": "dump",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab me/lunch/1
 {
   "data": {
     "/lunch": 2,
-    "/lunch/1": 1 },
+    "/lunch/1": 1
+  },
   "id": "me/lunch/1",
   "op": "grab",
   "resource": "/lunch/1",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/1 by me:
 {
   "data": {
@@ -105,50 +125,67 @@ grab me/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true } ],
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false } ] },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/lunch": 2,
-        "/lunch/1": 1 },
+        "/lunch/1": 1
+      },
       "by_owner": {
         "me/lunch": 1,
-        "me/lunch/1": 2 },
+        "me/lunch/1": 2
+      },
       "max_queue_length": 2,
       "max_queue_owner": "me/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 3,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab you/lunch
 {
   "data": {
-    "/lunch": 3 },
+    "/lunch": 3
+  },
   "id": "you/lunch",
   "op": "grab",
   "resource": "/lunch",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch by you:
 {
   "data": {
@@ -161,57 +198,76 @@ grab you/lunch
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false } ],
+            "you/lunch": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false } ] },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/lunch": 3,
-        "/lunch/1": 1 },
+        "/lunch/1": 1
+      },
       "by_owner": {
         "me/lunch": 1,
         "me/lunch/1": 2,
-        "you/lunch": 1 },
+        "you/lunch": 1
+      },
       "max_queue_length": 3,
       "max_queue_owner": "you/lunch",
       "max_queue_resource": "/lunch",
       "total": 4,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/lunch",
   "op": "dump",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab you/lunch/2
 {
   "data": {
     "/lunch": 4,
-    "/lunch/2": 1 },
+    "/lunch/2": 1
+  },
   "id": "you/lunch/2",
   "op": "grab",
   "resource": "/lunch/2",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/2 by you:
 {
   "data": {
@@ -224,70 +280,94 @@ grab you/lunch/2
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": true } ],
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false } ],
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": false } ] },
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/lunch": 4,
         "/lunch/1": 1,
-        "/lunch/2": 1 },
+        "/lunch/2": 1
+      },
       "by_owner": {
         "me/lunch": 1,
         "me/lunch/1": 2,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 4,
       "max_queue_owner": "you/lunch/2",
       "max_queue_resource": "/lunch",
       "total": 6,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/lunch/2",
   "op": "dump",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab charly/lunch/2
 {
   "data": {
     "/lunch": 4,
-    "/lunch/2": 2 },
+    "/lunch/2": 2
+  },
   "id": "charly/lunch/2",
   "op": "grab",
   "resource": "/lunch/2",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/2 by charly:
 {
   "data": {
@@ -300,76 +380,102 @@ grab charly/lunch/2
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
-          "shared": true } ],
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false } ],
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": false },
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/lunch": 5,
         "/lunch/1": 1,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch/2": 2,
         "me/lunch": 1,
         "me/lunch/1": 2,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 4,
       "max_queue_owner": "you/lunch/2",
       "max_queue_resource": "/lunch",
       "total": 8,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/2",
   "op": "dump",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab me/dinner
 {
   "data": {
-    "/dinner": 1 },
+    "/dinner": 1
+  },
   "id": "me/dinner",
   "op": "grab",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 == After grab dinner by me:
 {
   "data": {
@@ -382,84 +488,113 @@ grab me/dinner
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false } ],
+            "me/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
-          "shared": true } ],
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false } ],
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": false },
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 1,
         "/lunch": 5,
         "/lunch/1": 1,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch/2": 2,
         "me/dinner": 1,
         "me/lunch": 1,
         "me/lunch/1": 2,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 4,
       "max_queue_owner": "you/lunch/2",
       "max_queue_resource": "/lunch",
       "total": 9,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/dinner",
   "op": "dump",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab you/dinner
 {
   "data": {
-    "/dinner": 2 },
+    "/dinner": 2
+  },
   "id": "you/dinner",
   "op": "grab",
   "resource": "/dinner",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab dinner by you:
 {
   "data": {
@@ -472,64 +607,89 @@ grab you/dinner
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
-          "shared": true } ],
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false } ],
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": false },
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 5,
         "/lunch/1": 1,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch/2": 2,
         "me/dinner": 1,
@@ -537,25 +697,31 @@ grab you/dinner
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 4,
       "max_queue_owner": "you/lunch/2",
       "max_queue_resource": "/lunch",
       "total": 10,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/dinner",
   "op": "dump",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab charly/lunch
 {
   "data": {
-    "/lunch": 5 },
+    "/lunch": 5
+  },
   "id": "charly/lunch",
   "op": "grab",
   "resource": "/lunch",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch by charly:
 {
   "data": {
@@ -568,69 +734,96 @@ grab charly/lunch
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
-          "shared": true },
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false } ],
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false } ],
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": false },
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 6,
         "/lunch/1": 1,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/2": 2,
@@ -639,26 +832,32 @@ grab charly/lunch
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 5,
       "max_queue_owner": "charly/lunch",
       "max_queue_resource": "/lunch",
       "total": 11,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch",
   "op": "dump",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab charly/lunch/1
 {
   "data": {
     "/lunch": 6,
-    "/lunch/1": 2 },
+    "/lunch/1": 2
+  },
   "id": "charly/lunch/1",
   "op": "grab",
   "resource": "/lunch/1",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/1 by charly:
 {
   "data": {
@@ -671,79 +870,110 @@ grab charly/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
-          "shared": true },
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": false },
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -753,25 +983,31 @@ grab charly/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab you/lunch
 {
   "data": {
-    "/lunch": 3 },
+    "/lunch": 3
+  },
   "id": "you/lunch",
   "op": "grab",
   "resource": "/lunch",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch by you:
 {
   "data": {
@@ -784,79 +1020,110 @@ grab you/lunch
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
-          "shared": true },
+            "you/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "you/lunch/2": timestamp },
-          "shared": false },
+            "you/lunch/2": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -866,16 +1133,20 @@ grab you/lunch
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/lunch",
   "op": "dump",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release me/lunch/2
 {
@@ -883,7 +1154,8 @@ release me/lunch/2
   "id": "you/lunch/2",
   "op": "release",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch/2 by you:
 {
   "data": {
@@ -896,74 +1168,104 @@ release me/lunch/2
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": true },
+            "charly/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -973,26 +1275,32 @@ release me/lunch/2
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/lunch/2",
   "op": "dump",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab me/lunch/1
 {
   "data": {
     "/lunch": 2,
-    "/lunch/1": 1 },
+    "/lunch/1": 1
+  },
   "id": "me/lunch/1",
   "op": "grab",
   "resource": "/lunch/1",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/1 by me:
 {
   "data": {
@@ -1005,74 +1313,104 @@ grab me/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": true },
+            "charly/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1082,26 +1420,32 @@ grab me/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab charly/lunch/2
 {
   "data": {
     "/lunch": 4,
-    "/lunch/2": 1 },
+    "/lunch/2": 1
+  },
   "id": "charly/lunch/2",
   "op": "grab",
   "resource": "/lunch/2",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/2 by charly:
 {
   "data": {
@@ -1114,74 +1458,104 @@ grab charly/lunch/2
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch": timestamp },
-          "shared": false },
+            "me/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": true },
+            "charly/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1191,16 +1565,20 @@ grab charly/lunch/2
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/2",
   "op": "dump",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release me/lunch
 {
@@ -1208,7 +1586,8 @@ release me/lunch
   "id": "me/lunch",
   "op": "release",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch by me:
 {
   "data": {
@@ -1221,69 +1600,97 @@ release me/lunch
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": true },
+            "charly/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1293,26 +1700,32 @@ release me/lunch
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/lunch",
   "op": "dump",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab charly/lunch/2
 {
   "data": {
     "/lunch": 3,
-    "/lunch/2": 1 },
+    "/lunch/2": 1
+  },
   "id": "charly/lunch/2",
   "op": "grab",
   "resource": "/lunch/2",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/2 by charly:
 {
   "data": {
@@ -1325,69 +1738,97 @@ grab charly/lunch/2
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": true },
+            "charly/lunch/2": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch/2": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/2": timestamp },
-          "shared": false } ] },
+            "charly/lunch/2": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1397,16 +1838,20 @@ grab charly/lunch/2
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/2",
   "op": "dump",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release charly/lunch/2
 {
@@ -1414,7 +1859,8 @@ release charly/lunch/2
   "id": "charly/lunch/2",
   "op": "release",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch/2 by charly:
 {
   "data": {
@@ -1427,63 +1873,87 @@ release charly/lunch/2
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1493,26 +1963,32 @@ release charly/lunch/2
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/2",
   "op": "dump",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab me/lunch/1
 {
   "data": {
     "/lunch": 1,
-    "/lunch/1": 1 },
+    "/lunch/1": 1
+  },
   "id": "me/lunch/1",
   "op": "grab",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 == After grab lunch/1 by me:
 {
   "data": {
@@ -1525,63 +2001,87 @@ grab me/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch": timestamp },
-          "shared": false },
+            "charly/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1591,16 +2091,20 @@ grab me/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release charly/lunch
 {
@@ -1608,7 +2112,8 @@ release charly/lunch
   "id": "charly/lunch",
   "op": "release",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch by charly:
 {
   "data": {
@@ -1621,63 +2126,87 @@ release charly/lunch
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1687,16 +2216,20 @@ release charly/lunch
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch",
   "op": "dump",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release charly/lunch/1
 {
@@ -1704,7 +2237,8 @@ release charly/lunch/1
   "id": "charly/lunch/1",
   "op": "release",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch/1 by charly:
 {
   "data": {
@@ -1717,63 +2251,87 @@ release charly/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": true },
+            "me/lunch/1": timestamp
+          },
+          "shared": true
+        },
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {},
-          "shared": true } ],
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "me/lunch/1": timestamp },
-          "shared": false },
+            "me/lunch/1": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {},
-          "shared": false } ] },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1783,16 +2341,20 @@ release charly/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release me/lunch/1
 {
@@ -1800,7 +2362,8 @@ release me/lunch/1
   "id": "me/lunch/1",
   "op": "release",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch/1 by me:
 {
   "data": {
@@ -1813,47 +2376,64 @@ release me/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {},
-          "shared": true } ] },
+          "shared": true
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 7,
         "/lunch/1": 2,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 2,
@@ -1863,26 +2443,32 @@ release me/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 13,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab charly/lunch/1
 {
   "data": {
     "/lunch": 4,
-    "/lunch/1": 1 },
+    "/lunch/1": 1
+  },
   "id": "charly/lunch/1",
   "op": "grab",
   "resource": "/lunch/1",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab lunch/1 by charly:
 {
   "data": {
@@ -1895,54 +2481,75 @@ grab charly/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -1952,25 +2559,31 @@ grab charly/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab you/dinner
 {
   "data": {
-    "/dinner": 2 },
+    "/dinner": 2
+  },
   "id": "you/dinner",
   "op": "grab",
   "resource": "/dinner",
-  "status": "wait" }
+  "status": "wait"
+}
 == After grab dinner by you:
 {
   "data": {
@@ -1983,54 +2596,75 @@ grab you/dinner
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "me/dinner": timestamp },
-          "shared": false },
+            "me/dinner": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2040,16 +2674,20 @@ grab you/dinner
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/dinner",
   "op": "dump",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release me/dinner
 {
@@ -2057,7 +2695,8 @@ release me/dinner
   "id": "me/dinner",
   "op": "release",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release dinner by me:
 {
   "data": {
@@ -2070,49 +2709,68 @@ release me/dinner
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2122,25 +2780,31 @@ release me/dinner
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "me/dinner",
   "op": "dump",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 grab you/dinner
 {
   "data": {
-    "/dinner": 1 },
+    "/dinner": 1
+  },
   "id": "you/dinner",
   "op": "grab",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 == After grab dinner by you:
 {
   "data": {
@@ -2153,49 +2817,68 @@ grab you/dinner
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2205,16 +2888,20 @@ grab you/dinner
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/dinner",
   "op": "dump",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 shutdown should fail
 {
@@ -2222,7 +2909,8 @@ shutdown should fail
   "id": "any/all",
   "op": "shutdown",
   "resource": "/all",
-  "status": "wait" }
+  "status": "wait"
+}
 == After shutdown all by any:
 {
   "data": {
@@ -2235,49 +2923,68 @@ shutdown should fail
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/dinner": [
         {
           "exes": {},
           "owners": {
-            "you/dinner": timestamp },
-          "shared": false } ],
+            "you/dinner": timestamp
+          },
+          "shared": false
+        }
+      ],
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2287,16 +2994,20 @@ shutdown should fail
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "any/all",
   "op": "dump",
   "resource": "/all",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release you/dinner
 {
@@ -2304,7 +3015,8 @@ release you/dinner
   "id": "you/dinner",
   "op": "release",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release dinner by you:
 {
   "data": {
@@ -2317,43 +3029,59 @@ release you/dinner
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2363,16 +3091,20 @@ release you/dinner
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/dinner",
   "op": "dump",
   "resource": "/dinner",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 shutdown should fail
 {
@@ -2380,7 +3112,8 @@ shutdown should fail
   "id": "any/all",
   "op": "shutdown",
   "resource": "/all",
-  "status": "wait" }
+  "status": "wait"
+}
 == After shutdown all by any:
 {
   "data": {
@@ -2393,43 +3126,59 @@ shutdown should fail
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": true } ],
+            "charly/lunch/1": timestamp
+          },
+          "shared": true
+        }
+      ],
       "/lunch/1": [
         {
           "exes": {},
           "owners": {
-            "charly/lunch/1": timestamp },
-          "shared": false } ] },
+            "charly/lunch/1": timestamp
+          },
+          "shared": false
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2439,16 +3188,20 @@ shutdown should fail
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "any/all",
   "op": "dump",
   "resource": "/all",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release charly/lunch/1
 {
@@ -2456,7 +3209,8 @@ release charly/lunch/1
   "id": "charly/lunch/1",
   "op": "release",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch/1 by charly:
 {
   "data": {
@@ -2469,36 +3223,48 @@ release charly/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
-            "charly/lunch/1": timestamp },
+            "charly/lunch/1": timestamp
+          },
           "owners": {},
-          "shared": true } ] },
+          "shared": true
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2508,16 +3274,20 @@ release charly/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "charly/lunch/1",
   "op": "dump",
   "resource": "/lunch/1",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release you/lunch/1
 {
@@ -2525,7 +3295,8 @@ release you/lunch/1
   "id": "you/lunch/2",
   "op": "release",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch/2 by you:
 {
   "data": {
@@ -2538,37 +3309,49 @@ release you/lunch/1
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {
       "/lunch": [
         {
           "exes": {},
           "owners": {
-            "you/lunch": timestamp },
-          "shared": false },
+            "you/lunch": timestamp
+          },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/2": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true },
+          "shared": true
+        },
         {
           "exes": {
-            "charly/lunch": timestamp },
+            "charly/lunch": timestamp
+          },
           "owners": {},
-          "shared": false },
+          "shared": false
+        },
         {
           "exes": {
             "charly/lunch/1": timestamp,
-            "you/lunch/2": timestamp },
+            "you/lunch/2": timestamp
+          },
           "owners": {},
-          "shared": true } ] },
+          "shared": true
+        }
+      ]
+    },
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2578,16 +3361,20 @@ release you/lunch/1
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/lunch/2",
   "op": "dump",
   "resource": "/lunch/2",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 release you/lunch
 {
@@ -2595,7 +3382,8 @@ release you/lunch
   "id": "you/lunch",
   "op": "release",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 == After release lunch by you:
 {
   "data": {
@@ -2608,14 +3396,16 @@ release you/lunch
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {},
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2625,16 +3415,20 @@ release you/lunch
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": 0 } },
+      "uptime": 0
+    }
+  },
   "id": "you/lunch",
   "op": "dump",
   "resource": "/lunch",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 stats
 {
@@ -2643,7 +3437,8 @@ stats
       "/dinner": 2,
       "/lunch": 8,
       "/lunch/1": 3,
-      "/lunch/2": 2 },
+      "/lunch/2": 2
+    },
     "by_owner": {
       "charly/lunch": 1,
       "charly/lunch/1": 4,
@@ -2653,16 +3448,19 @@ stats
       "me/lunch/1": 2,
       "you/dinner": 1,
       "you/lunch": 1,
-      "you/lunch/2": 2 },
+      "you/lunch/2": 2
+    },
     "max_queue_length": 6,
     "max_queue_owner": "charly/lunch/1",
     "max_queue_resource": "/lunch",
     "total": 15,
-    "uptime": uptime },
+    "uptime": uptime
+  },
   "id": "any/all",
   "op": "stats",
   "resource": "/all",
-  "status": "ok" }
+  "status": "ok"
+}
 == After stats all by any:
 {
   "data": {
@@ -2675,14 +3473,16 @@ stats
       "port": "port",
       "timeout": "1000000",
       "timestamp": timestamp,
-      "version": "VERSION" },
+      "version": "VERSION"
+    },
     "queues": {},
     "stats": {
       "by_lock": {
         "/dinner": 2,
         "/lunch": 8,
         "/lunch/1": 3,
-        "/lunch/2": 2 },
+        "/lunch/2": 2
+      },
       "by_owner": {
         "charly/lunch": 1,
         "charly/lunch/1": 4,
@@ -2692,16 +3492,20 @@ stats
         "me/lunch/1": 2,
         "you/dinner": 1,
         "you/lunch": 1,
-        "you/lunch/2": 2 },
+        "you/lunch/2": 2
+      },
       "max_queue_length": 6,
       "max_queue_owner": "charly/lunch/1",
       "max_queue_resource": "/lunch",
       "total": 15,
-      "uptime": uptime } },
+      "uptime": uptime
+    }
+  },
   "id": "any/all",
   "op": "dump",
   "resource": "/all",
-  "status": "ok" }
+  "status": "ok"
+}
 ==
 shutdown should now work
 {
@@ -2709,6 +3513,7 @@ shutdown should now work
   "id": "any/all",
   "op": "shutdown",
   "resource": "/all",
-  "status": "ok" }
+  "status": "ok"
+}
 == After shutdown all by any:
 ==

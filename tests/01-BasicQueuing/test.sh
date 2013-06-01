@@ -32,12 +32,12 @@ begin_test BasicQueuing
         sleep 1
         echo "$comment" >> "$test_path"/actual.responses
         curl "http://$host":"$port/$resource""?op=$op""&id=$id" 2>/dev/null\
-            | ./json.py test\
+            | ./grab_json.py test\
             | normalize_responses\
            >> "$test_path"/actual.responses
         echo "== After $op $resource by $id:" >> "$test_path"/actual.responses
         curl "http://$host":"$port/$resource""?op=dump""&id=$id" 2>/dev/null\
-            | ./json.py test 2>/dev/null\
+            | ./grab_json.py test 2>/dev/null\
             | normalize_responses\
            >> "$test_path"/actual.responses
         echo "==" >> "$test_path"/actual.responses

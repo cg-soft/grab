@@ -1,0 +1,54 @@
+Server running at http://127.0.0.1:port
+GET: op=config; id=any; until=timestamp; resource=/any
+GET: op=dump; id=any; until=timestamp; resource=/
+GET: op=grab; id=me; until=timestamp; resource=/lunch/1
+Adding me/lunch/1 to end of /lunch/1
+Adding me/lunch/1 to end of /lunch
+GET: op=dump; id=me; until=timestamp; resource=/
+GET: op=grab; id=you; until=timestamp; resource=/lunch/2
+Adding you/lunch/2 to end of /lunch/2
+Merging you/lunch/2 at end of /lunch
+GET: op=dump; id=you; until=timestamp; resource=/
+GET: op=release; id=you; until=timestamp; resource=/lunch/2
+Found you/lunch/2 at /lunch/2[0]
+Removing you/lunch/2 from /lunch/2
+Found you/lunch/2 at /lunch[0]
+GET: op=dump; id=you; until=timestamp; resource=/
+GET: op=release; id=me; until=timestamp; resource=/lunch/1
+Found me/lunch/1 at /lunch/1[0]
+Removing me/lunch/1 from /lunch/1
+Found me/lunch/1 at /lunch[0]
+Removing you/lunch/2,me/lunch/1 from /lunch
+GET: op=dump; id=me; until=timestamp; resource=/
+GET: op=stats; id=any; until=timestamp; resource=/all
+GET: op=dump; id=any; until=timestamp; resource=/
+GET: op=config; id=any; until=timestamp; resource=/
+GET: op=shutdown; id=any; until=timestamp; resource=/all
+Shutting down
+Server running at http://127.0.0.1:port
+GET: op=config; id=any; until=timestamp; resource=/any
+GET: op=dump; id=any; until=timestamp; resource=/
+GET: op=grab; id=me; until=timestamp; resource=/lunch/1
+Adding me/lunch/1 to end of /lunch/1
+Adding me/lunch/1 to end of /lunch
+GET: op=dump; id=me; until=timestamp; resource=/
+GET: op=grab; id=you; until=timestamp; resource=/lunch/2
+Adding you/lunch/2 to end of /lunch/2
+Merging you/lunch/2 at end of /lunch
+GET: op=dump; id=you; until=timestamp; resource=/
+GET: op=release; id=you; until=timestamp; resource=/lunch/2
+Found you/lunch/2 at /lunch/2[0]
+Removing you/lunch/2 from /lunch/2
+Found you/lunch/2 at /lunch[0]
+GET: op=dump; id=you; until=timestamp; resource=/
+GET: op=release; id=me; until=timestamp; resource=/lunch/1
+Found me/lunch/1 at /lunch/1[0]
+Removing me/lunch/1 from /lunch/1
+Found me/lunch/1 at /lunch[0]
+Removing you/lunch/2,me/lunch/1 from /lunch
+GET: op=dump; id=me; until=timestamp; resource=/
+GET: op=stats; id=any; until=timestamp; resource=/all
+GET: op=dump; id=any; until=timestamp; resource=/
+GET: op=config; id=any; until=timestamp; resource=/
+GET: op=shutdown; id=any; until=timestamp; resource=/all
+Shutting down

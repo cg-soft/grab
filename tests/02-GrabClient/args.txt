@@ -1,0 +1,9 @@
+# actor  op       resource  comment
+# =====  ==       ========  =======
+  any    config   any
+  me     grab     lunch/1   grab me/lunch/1
+  you    grab     lunch/2   grab you/lunch/2
+  you    release  lunch/2   release me/lunch/2
+  me     release  lunch/1   release me/lunch/1
+  any    stats    all       stats
+  any    shutdown all       shutdown should now work
