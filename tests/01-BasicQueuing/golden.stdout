@@ -1,121 +1,121 @@
 Server running at http://127.0.0.1:port
-GET: op=config; id=any; resource=/any
-GET: op=dump; id=any; resource=/any
-GET: op=grab; id=me; resource=/lunch
+GET: op=config; id=any; until=timestamp; resource=/any
+GET: op=dump; id=any; until=timestamp; resource=/any
+GET: op=grab; id=me; until=timestamp; resource=/lunch
 Adding me/lunch to end of /lunch
-GET: op=dump; id=me; resource=/lunch
-GET: op=grab; id=me; resource=/lunch/1
+GET: op=dump; id=me; until=timestamp; resource=/lunch
+GET: op=grab; id=me; until=timestamp; resource=/lunch/1
 Adding me/lunch/1 to end of /lunch/1
 Adding me/lunch/1 to end of /lunch
-GET: op=dump; id=me; resource=/lunch/1
-GET: op=grab; id=you; resource=/lunch
+GET: op=dump; id=me; until=timestamp; resource=/lunch/1
+GET: op=grab; id=you; until=timestamp; resource=/lunch
 Adding you/lunch to end of /lunch
-GET: op=dump; id=you; resource=/lunch
-GET: op=grab; id=you; resource=/lunch/2
+GET: op=dump; id=you; until=timestamp; resource=/lunch
+GET: op=grab; id=you; until=timestamp; resource=/lunch/2
 Adding you/lunch/2 to end of /lunch/2
 Adding you/lunch/2 to end of /lunch
-GET: op=dump; id=you; resource=/lunch/2
-GET: op=grab; id=charly; resource=/lunch/2
+GET: op=dump; id=you; until=timestamp; resource=/lunch/2
+GET: op=grab; id=charly; until=timestamp; resource=/lunch/2
 Adding charly/lunch/2 to end of /lunch/2
 Merging charly/lunch/2 at end of /lunch
-GET: op=dump; id=charly; resource=/lunch/2
-GET: op=grab; id=me; resource=/dinner
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/2
+GET: op=grab; id=me; until=timestamp; resource=/dinner
 Adding me/dinner to end of /dinner
-GET: op=dump; id=me; resource=/dinner
-GET: op=grab; id=you; resource=/dinner
+GET: op=dump; id=me; until=timestamp; resource=/dinner
+GET: op=grab; id=you; until=timestamp; resource=/dinner
 Adding you/dinner to end of /dinner
-GET: op=dump; id=you; resource=/dinner
-GET: op=grab; id=charly; resource=/lunch
+GET: op=dump; id=you; until=timestamp; resource=/dinner
+GET: op=grab; id=charly; until=timestamp; resource=/lunch
 Adding charly/lunch to end of /lunch
-GET: op=dump; id=charly; resource=/lunch
-GET: op=grab; id=charly; resource=/lunch/1
+GET: op=dump; id=charly; until=timestamp; resource=/lunch
+GET: op=grab; id=charly; until=timestamp; resource=/lunch/1
 Adding charly/lunch/1 to end of /lunch/1
 Adding charly/lunch/1 to end of /lunch
-GET: op=dump; id=charly; resource=/lunch/1
-GET: op=grab; id=you; resource=/lunch
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/1
+GET: op=grab; id=you; until=timestamp; resource=/lunch
 Found you/lunch at /lunch[2]
-GET: op=dump; id=you; resource=/lunch
-GET: op=release; id=you; resource=/lunch/2
+GET: op=dump; id=you; until=timestamp; resource=/lunch
+GET: op=release; id=you; until=timestamp; resource=/lunch/2
 Found you/lunch/2 at /lunch/2[0]
 Removing you/lunch/2 from /lunch/2
 Found you/lunch/2 at /lunch[3]
-GET: op=dump; id=you; resource=/lunch/2
-GET: op=grab; id=me; resource=/lunch/1
+GET: op=dump; id=you; until=timestamp; resource=/lunch/2
+GET: op=grab; id=me; until=timestamp; resource=/lunch/1
 Found me/lunch/1 at /lunch/1[0]
 Found me/lunch/1 at /lunch[1]
-GET: op=dump; id=me; resource=/lunch/1
-GET: op=grab; id=charly; resource=/lunch/2
+GET: op=dump; id=me; until=timestamp; resource=/lunch/1
+GET: op=grab; id=charly; until=timestamp; resource=/lunch/2
 Found charly/lunch/2 at /lunch/2[0]
 Found charly/lunch/2 at /lunch[3]
-GET: op=dump; id=charly; resource=/lunch/2
-GET: op=release; id=me; resource=/lunch
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/2
+GET: op=release; id=me; until=timestamp; resource=/lunch
 Found me/lunch at /lunch[0]
 Removing me/lunch from /lunch
-GET: op=dump; id=me; resource=/lunch
-GET: op=grab; id=charly; resource=/lunch/2
+GET: op=dump; id=me; until=timestamp; resource=/lunch
+GET: op=grab; id=charly; until=timestamp; resource=/lunch/2
 Found charly/lunch/2 at /lunch/2[0]
 Found charly/lunch/2 at /lunch[3]
-GET: op=dump; id=charly; resource=/lunch/2
-GET: op=release; id=charly; resource=/lunch/2
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/2
+GET: op=release; id=charly; until=timestamp; resource=/lunch/2
 Found charly/lunch/2 at /lunch/2[0]
 Removing charly/lunch/2 from /lunch/2
 Found charly/lunch/2 at /lunch[3]
-GET: op=dump; id=charly; resource=/lunch/2
-GET: op=grab; id=me; resource=/lunch/1
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/2
+GET: op=grab; id=me; until=timestamp; resource=/lunch/1
 Found me/lunch/1 at /lunch/1[0]
 Found me/lunch/1 at /lunch[1]
-GET: op=dump; id=me; resource=/lunch/1
-GET: op=release; id=charly; resource=/lunch
+GET: op=dump; id=me; until=timestamp; resource=/lunch/1
+GET: op=release; id=charly; until=timestamp; resource=/lunch
 Found charly/lunch at /lunch[4]
-GET: op=dump; id=charly; resource=/lunch
-GET: op=release; id=charly; resource=/lunch/1
+GET: op=dump; id=charly; until=timestamp; resource=/lunch
+GET: op=release; id=charly; until=timestamp; resource=/lunch/1
 Found charly/lunch/1 at /lunch/1[1]
 Found charly/lunch/1 at /lunch[5]
-GET: op=dump; id=charly; resource=/lunch/1
-GET: op=release; id=me; resource=/lunch/1
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/1
+GET: op=release; id=me; until=timestamp; resource=/lunch/1
 Found me/lunch/1 at /lunch/1[0]
 Removing me/lunch/1 from /lunch/1
 Removing charly/lunch/1 from /lunch/1
 Found me/lunch/1 at /lunch[1]
 Removing me/lunch/1 from /lunch
-GET: op=dump; id=me; resource=/lunch/1
-GET: op=grab; id=charly; resource=/lunch/1
+GET: op=dump; id=me; until=timestamp; resource=/lunch/1
+GET: op=grab; id=charly; until=timestamp; resource=/lunch/1
 Adding charly/lunch/1 to end of /lunch/1
 Merging charly/lunch/1 at end of /lunch
-GET: op=dump; id=charly; resource=/lunch/1
-GET: op=grab; id=you; resource=/dinner
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/1
+GET: op=grab; id=you; until=timestamp; resource=/dinner
 Found you/dinner at /dinner[1]
-GET: op=dump; id=you; resource=/dinner
-GET: op=release; id=me; resource=/dinner
+GET: op=dump; id=you; until=timestamp; resource=/dinner
+GET: op=release; id=me; until=timestamp; resource=/dinner
 Found me/dinner at /dinner[0]
 Removing me/dinner from /dinner
-GET: op=dump; id=me; resource=/dinner
-GET: op=grab; id=you; resource=/dinner
+GET: op=dump; id=me; until=timestamp; resource=/dinner
+GET: op=grab; id=you; until=timestamp; resource=/dinner
 Found you/dinner at /dinner[0]
-GET: op=dump; id=you; resource=/dinner
-GET: op=shutdown; id=any; resource=/all
-GET: op=dump; id=any; resource=/all
-GET: op=release; id=you; resource=/dinner
+GET: op=dump; id=you; until=timestamp; resource=/dinner
+GET: op=shutdown; id=any; until=timestamp; resource=/all
+GET: op=dump; id=any; until=timestamp; resource=/all
+GET: op=release; id=you; until=timestamp; resource=/dinner
 Found you/dinner at /dinner[0]
 Removing you/dinner from /dinner
-GET: op=dump; id=you; resource=/dinner
-GET: op=shutdown; id=any; resource=/all
-GET: op=dump; id=any; resource=/all
-GET: op=release; id=charly; resource=/lunch/1
+GET: op=dump; id=you; until=timestamp; resource=/dinner
+GET: op=shutdown; id=any; until=timestamp; resource=/all
+GET: op=dump; id=any; until=timestamp; resource=/all
+GET: op=release; id=charly; until=timestamp; resource=/lunch/1
 Found charly/lunch/1 at /lunch/1[0]
 Removing charly/lunch/1 from /lunch/1
 Found charly/lunch/1 at /lunch[5]
-GET: op=dump; id=charly; resource=/lunch/1
-GET: op=release; id=you; resource=/lunch/2
-GET: op=dump; id=you; resource=/lunch/2
-GET: op=release; id=you; resource=/lunch
+GET: op=dump; id=charly; until=timestamp; resource=/lunch/1
+GET: op=release; id=you; until=timestamp; resource=/lunch/2
+GET: op=dump; id=you; until=timestamp; resource=/lunch/2
+GET: op=release; id=you; until=timestamp; resource=/lunch
 Found you/lunch at /lunch[2]
 Removing you/lunch from /lunch
 Removing you/lunch/2,charly/lunch/2 from /lunch
 Removing charly/lunch from /lunch
 Removing charly/lunch/1,you/lunch/2 from /lunch
-GET: op=dump; id=you; resource=/lunch
-GET: op=stats; id=any; resource=/all
-GET: op=dump; id=any; resource=/all
-GET: op=shutdown; id=any; resource=/all
+GET: op=dump; id=you; until=timestamp; resource=/lunch
+GET: op=stats; id=any; until=timestamp; resource=/all
+GET: op=dump; id=any; until=timestamp; resource=/all
+GET: op=shutdown; id=any; until=timestamp; resource=/all
 Shutting down

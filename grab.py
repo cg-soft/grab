@@ -9,12 +9,17 @@ import urllib2
 import time
 import sys
 import os
+import re
 import json
 import subprocess
 
 GRAB_URL = 'http://127.0.0.1:1337/'
 SLEEP = 30.0       # seconds
 MAX_ATTEMPTS = 120 # 1 hour
+
+# Support specifying durations
+until_regexp = re.compile(r'(\d+)([smhdw])')
+until_unit = { 's': 1, 'm': 60, 'h': 3600, 'd': 24*3600, 'w': 7*24*3600 }
 
 def usage(error=""):
     print >>sys.stderr, """Usage:
@@ -80,6 +85,16 @@ Options are:
 --sleep=<time>
    How long to sleep between polls
 
+--until=<duration>
+   How long to keep the lock. Durations can be expressed by a string of integer+unit
+   combinations. Possible units are seconds (s), minutes(m), hours(h), days(d) and
+   weeks(w). Units can be combined, for example 2w3d means 2 weeks and 3 days.
+   The default duration is "None", which means the lock needs to be refreshed within
+   the time period configured in the grab server, usually one minute. This option
+   essentially lets you set an expiration date in the future, so you do not need
+   to run a keepalive process if you know you want the resource to be locked for
+   at least the given duration.
+
 --url
    Url of lock service
 
@@ -101,7 +116,7 @@ def IsProcessRunning(processId):
     ps.stdout.close()
     ps.wait()
     if str(processId) in output:
-       return True
+        return True
     return False
 
 class Grab:
@@ -119,8 +134,12 @@ class Grab:
         else:
             self.ppid = ppid
 
-    def get(self, op, resource=""):
+    def get(self, op, resource="", until=None):
         url = self.url + resource + '?id=%s&op=%s' % (self.owner, op)
+        if until is not None:
+            url += '&until=%d' % until
+        if self.verbose:
+            print >>sys.stderr, "GET", url
         try:
             req = urllib2.urlopen(url)
         except:
@@ -139,7 +158,7 @@ class Grab:
         else:
             return None
 
-    def poll(self, op, resource, keepalive):
+    def poll(self, op, resource, until, keepalive):
         attempts = self.max_attempts
         while keepalive or attempts > 0:
             attempts -= 1
@@ -155,7 +174,7 @@ class Grab:
                     if self.verbose:
                         print >>sys.stderr, "Parent process died, shutting down"
                     sys.exit()
-            response = self.get(op, resource)
+            response = self.get(op, resource, until)
             if keepalive:
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting response to keepalive:"
@@ -184,6 +203,7 @@ if __name__ == '__main__':
     resource = None
     sha1sum = None
     ppid = None
+    until = None
     for arg in sys.argv[1:]:
         if parse_options:
             if arg in ("-h", "--help"):
@@ -204,10 +224,10 @@ if __name__ == '__main__':
                 max_attempts = arg[len("--max-attempts="):]
                 continue
             if arg.startswith("--ppid="):
-                try:
-                    ppid = int(arg[len("--ppid="):])
-                except:
-                    usage("--ppid=<n> must be an integer")
+                ppid = arg[len("--ppid="):]
+                continue
+            if arg.startswith("--until="):
+                until = arg[len("--until="):]
                 continue
             if arg.startswith("--sleep="):
                 sleep = arg[len("--sleep="):]
@@ -238,6 +258,20 @@ if __name__ == '__main__':
     if not owner.isalnum():
         usage("Value for --owner must be alphanumeric: %s." % owner)
 
+    if ppid is not None:
+        try:
+            ppid = int(ppid)
+        except:
+            usage("--ppid=<n> must be an integer")
+
+    if until is not None:
+        offset = 0
+        for count, unit in until_regexp.findall(until):
+            offset += int(count)*until_unit[unit]
+        if offset == 0:
+            usage("--until=<time> must be a duration expressed in <n>{s|m|h|d|w}")
+        until = int(time.time()*1000) + offset*1000
+
     if op in ('peek', 'grab', 'release') and resource is None:
         usage("Must specify resource for %s." % op)
     elif resource is None:
@@ -266,7 +300,7 @@ if __name__ == '__main__':
                 print "No restart required, running service matches specified --hash string"
                 sys.exit(0)
 
-    result = grab.poll(op, resource, keepalive)
+    result = grab.poll(op, resource, until, keepalive)
 
     if verbose or op in ('config', 'stats', 'dump'):
         if result is None:

@@ -19,6 +19,7 @@ Features include:
 * REST api using simple GET requests returning JSON responses.
 * Pure in memory state, no databases or files required.
 * Clean shutdown to preserve continuous service even during upgrades.
+* Support for long term locking (e.g. code freeze / maintenance) by setting lock expiration time into the future.
 
 Components
 ----------

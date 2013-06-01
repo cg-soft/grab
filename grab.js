@@ -254,16 +254,15 @@ Queue = function (){
 }
 
 
-function purge(resource) {
+function purge(resource, cutoff) {
   var purged = 0;
   if (resource in queues) {
-    var now = new Date().getTime();
-    var expired = queues[resource].expired(now, config.timeout);
+    var expired = queues[resource].expired(cutoff, config.timeout);
     while (expired) {
       var lock = queues[resource].dequeue();
       if (config.debug) console.log("Removing "+keys(lock.exes).join()+" from "+resource);
       purged++;
-      expired = queues[resource].expired(now, config.timeout);
+      expired = queues[resource].expired(cutoff, config.timeout);
     }
     if (queues[resource].getLength() === 0) delete queues[resource];
   }
@@ -273,7 +272,7 @@ function purge(resource) {
 setInterval(function () {
   var now = new Date().getTime();
   for (var resource in queues) {
-    purge(resource);
+    purge(resource, now);
   }
 }, config.gc_interval);
 
@@ -294,15 +293,13 @@ function parent_of(str)
 }
 
 var action = {
-  'stats': function (op, id, resource) {
-    var now = new Date().getTime();
-    stats.uptime = now - config.timestamp;
+  'stats': function (op, id, resource, until) {
+    stats.uptime = until - config.timestamp;
     return response(op, id, resource, 'ok', stats);
   },
-  'grab': function (op, id, resource) {
+  'grab': function (op, id, resource, until) {
     var pos = 0;
     var locks = {};
-    var now = new Date().getTime();
     var r = resource;
     var shared = false;
     while (r !== '') {
@@ -317,28 +314,28 @@ var action = {
           queues[r] = new Queue();
         }
       }
-      locks[r] = queues[r].enqueue(r, id, now, shared);
+      locks[r] = queues[r].enqueue(r, id, until, shared);
       pos += locks[r] - 1;
       r = parent_of(r);
       shared = true;
     }
     return response(op, id, resource, pos === 0 ? 'ok' : 'wait', locks);
   },
-  'release': function (op, id, resource) {
+  'release': function (op, id, resource, until) {
     var purged = 0;
     var r = resource;
     var shared = false;
     while (r !== '') {
       if (r in queues) {
         queues[r].enqueue(r, id, 0, shared);
-        purged += purge(r);
+        purged += purge(r, until);
       }
       r = parent_of(r);
       shared = true;
     }
     return response(op, id, resource, 'ok', purged);
   },
-  'peek': function (op, id, resource) {
+  'peek': function (op, id, resource, until) {
     var locks = {};
     var r = resource;
     while (r !== '') {
@@ -350,15 +347,15 @@ var action = {
     }
     return response(op, id, resource, 'ok', locks);
   },
-  'dump': function (op, id, resource) {
+  'dump': function (op, id, resource, until) {
     var data = {};
     for (var q in queues) data[q] = queues[q].dump();
-    return response(op, id, resource, 'ok', data);
+    return response(op, id, resource, 'ok', { "config": config, "stats": stats, "queues": data });
   },
-  'config': function (op, id, resource) {
+  'config': function (op, id, resource, until) {
     return response(op, id, resource, 'ok', config);
   },
-  'shutdown': function (op, id, resource) {
+  'shutdown': function (op, id, resource, until) {
     shutdown_pending = true;
     for (var q in queues) return response(op, id, resource, 'wait', 0);
     shutdown = true;
@@ -371,10 +368,12 @@ http.createServer(function (req, res) {
   var resource = req_url.pathname;
   var op = req_url.query['op'];
   var id = req_url.query['id'];
+  var until = req_url.query['until'];
 
   if (typeof op === 'undefined') op = 'peek';
   if (typeof id === 'undefined') id = 'unknown';
-  if (config.debug) console.log("GET: op="+op+"; id="+id+"; resource="+resource);
+  if (typeof until === 'undefined') until = new Date().getTime();
+  if (config.debug) console.log("GET: op="+op+"; id="+id+"; until="+until+"; resource="+resource);
   if (id === 'unknown' && ( op === 'grab' || op == 'release')) {
     if (config.debug) console.log('"id" required for "'+op+'"');
     res.writeHead(400, '"id" required for "'+op+'"');
@@ -389,7 +388,7 @@ http.createServer(function (req, res) {
     res.end();
   } else if (op in action) {
     res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end(action[op](op, id+resource, resource));
+    res.end(action[op](op, id+resource, resource, until));
   } else {
     if (config.debug) console.log('Not a recognized operation: '+op);
     res.writeHead(400, 'Not a recognized operation: '+op);

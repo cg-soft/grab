@@ -6,6 +6,14 @@
 host=127.0.0.1
 port=1337
 
+normalize_responses()
+{
+  sed -e 's/^\(            "[^"]*"\): [1-9][0-9]*/\1: timestamp/'\
+      -e 's/\("uptime"\): [1-9][0-9]*/\1: uptime/'\
+      -e 's/\("timestamp"\): [1-9][0-9]*/\1: timestamp/'\
+      -e 's/\("port"\): "[1-9][0-9]*"/\1: "port"/'
+}
+
 begin_test BasicQueuing
   node grab.js\
          --debug\
@@ -25,24 +33,20 @@ begin_test BasicQueuing
         echo "$comment" >> "$test_path"/actual.responses
         curl "http://$host":"$port/$resource""?op=$op""&id=$id" 2>/dev/null\
             | ./json.py test\
-            | sed -e 's/^\(          "[^"]*"\): [1-9][0-9]*/\1: timestamp/'\
-                  -e 's/\("uptime"\): [1-9][0-9]*/\1: uptime/'\
-                  -e 's/\("timestamp"\): [1-9][0-9]*/\1: timestamp/'\
-                  -e 's/\("port"\): "[1-9][0-9]*"/\1: "port"/'\
+            | normalize_responses\
            >> "$test_path"/actual.responses
         echo "== After $op $resource by $id:" >> "$test_path"/actual.responses
         curl "http://$host":"$port/$resource""?op=dump""&id=$id" 2>/dev/null\
             | ./json.py test 2>/dev/null\
-            | sed -e 's/^\(          "[^"]*"\): [1-9][0-9]*/\1: timestamp/'\
-                  -e 's/\("timestamp"\): [1-9][0-9]*/\1: timestamp/'\
-                  -e 's/\("port"\): "[1-9][0-9]*"/\1: "port"/'\
+            | normalize_responses\
            >> "$test_path"/actual.responses
         echo "==" >> "$test_path"/actual.responses
       done
   normalized_diff "$test_path"/golden.responses\
                   "$test_path"/actual.responses\
    || fail_test BasicQueuing "responses differs from golden output" "see diff"
-  sed "s/$port/port/g"\
+  sed -e "s/$port/port/g"\
+      -e "s/until=[0-9]*/until=timestamp/g"\
     "$test_path"/actual.stdout > "$test_path"/actual.stdout.filtered
   normalized_diff "$test_path"/golden.stdout\
                   "$test_path"/actual.stdout.filtered\
