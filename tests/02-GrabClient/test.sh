@@ -5,11 +5,13 @@
 
 host=127.0.0.1
 port=1337
+url=http://$host:$port/
 
 normalize_responses()
 {
   sed -e 's/^\(            "[^"]*"\): [1-9][0-9]*/\1: timestamp/'\
       -e '/^WARNING:/d'\
+      -e "s/$host:$port/host:port/g"\
       -e 's/\("uptime"\): [1-9][0-9]*/\1: uptime/'\
       -e 's/\("timestamp"\): [1-9][0-9]*/\1: timestamp/'\
       -e 's/\("port"\): "[1-9][0-9]*"/\1: "port"/'
@@ -34,11 +36,11 @@ begin_test GrabCLient
       do
         sleep 1
         echo "$comment" >> "$test_path"/actual.responses
-        ./grab.py --owner=$id --verbose $op $resource 2>&1\
+        ./grab.py --url=$url --owner=$id --verbose $op $resource 2>&1\
             | normalize_responses\
            >> "$test_path"/actual.responses
         echo "== After $op $resource by $id:" >> "$test_path"/actual.responses
-        ./grab.py --owner=$id --verbose dump 2>&1\
+        ./grab.py --url=$url --owner=$id --verbose dump 2>&1\
             | normalize_responses\
            >> "$test_path"/actual.responses
         echo "==" >> "$test_path"/actual.responses
@@ -62,11 +64,11 @@ begin_test GrabCLient
       do
         sleep 1
         echo "$comment" >> "$test_path"/actual.responses
-        ./grab.py --owner=$id --verbose $op $resource 2>&1\
+        ./grab.py --url=$url --owner=$id --verbose $op $resource 2>&1\
             | normalize_responses\
            >> "$test_path"/actual.responses
         echo "== After $op $resource by $id:" >> "$test_path"/actual.responses
-        ./grab.py --owner=$id --verbose dump 2>&1\
+        ./grab.py --url=$url --owner=$id --verbose dump 2>&1\
             | normalize_responses\
            >> "$test_path"/actual.responses
         echo "==" >> "$test_path"/actual.responses
