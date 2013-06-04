@@ -156,6 +156,7 @@ Queue = function (){
           return 0;
         } 
         queue[i].owners[owner] = timestamp;
+        if (timestamp > queue[i].max_timestamp) queue[i].max_timestamp = timestamp;
         return (i - offset + 1);
       } 
       // We want a shared lock, and this is a shared lock at
@@ -171,6 +172,7 @@ Queue = function (){
         if (config.debug) console.log("Merging "+owner+" at end of "+resource);
         register_stats(resource, owner);
         queue[i].owners[owner] = timestamp;
+        if (timestamp > queue[i].max_timestamp) queue[i].max_timestamp = timestamp;
         return (i - offset + 1);
       }
     }
@@ -178,7 +180,7 @@ Queue = function (){
     // enqueue the new lock
     if (timestamp > 0) {
       if (config.debug) console.log("Adding "+owner+" to end of "+resource);
-      var q = { "owners": {}, "exes": {}, "shared": shared };
+      var q = { "owners": {}, "exes": {}, "shared": shared, "max_timestamp": timestamp };
       q.owners[owner] = timestamp;
       queue.push(q);
       register_stats(resource, owner);
@@ -302,9 +304,10 @@ var action = {
     var locks = {};
     var r = resource;
     var shared = false;
+    var max_timestamp = 0;
     while (r !== '') {
       if (r in queues) {
-        if (!(id in queues[r].peek()) && shutdown_pending) {
+        if (!(id in queues[r].peek().owners) && shutdown_pending) {
           return response(op, id, r, 'shutdown', 0);
         }
       } else {
@@ -315,11 +318,13 @@ var action = {
         }
       }
       locks[r] = queues[r].enqueue(r, id, until, shared);
+      var t = queues[r].peek().max_timestamp;
+      if (t > max_timestamp) max_timestamp = t;
       pos += locks[r] - 1;
       r = parent_of(r);
       shared = true;
     }
-    return response(op, id, resource, pos === 0 ? 'ok' : 'wait', locks);
+    return response(op, id, resource, pos === 0 ? 'ok' : 'wait', { "pos": locks, "until": max_timestamp });
   },
   'release': function (op, id, resource, until) {
     var purged = 0;
@@ -373,6 +378,7 @@ http.createServer(function (req, res) {
   if (typeof op === 'undefined') op = 'peek';
   if (typeof id === 'undefined') id = 'unknown';
   if (typeof until === 'undefined') until = new Date().getTime();
+  else until = parseInt(until);
   if (config.debug) console.log("GET: op="+op+"; id="+id+"; until="+until+"; resource="+resource);
   if (id === 'unknown' && ( op === 'grab' || op == 'release')) {
     if (config.debug) console.log('"id" required for "'+op+'"');

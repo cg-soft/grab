@@ -50,7 +50,10 @@
 grab me/lunch
 {
   "data": {
-    "/lunch": 1
+    "pos": {
+      "/lunch": 1
+    },
+    "until": until
   },
   "id": "me/lunch",
   "op": "grab",
@@ -75,6 +78,7 @@ grab me/lunch
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -105,8 +109,11 @@ grab me/lunch
 grab me/lunch/1
 {
   "data": {
-    "/lunch": 2,
-    "/lunch/1": 1
+    "pos": {
+      "/lunch": 2,
+      "/lunch/1": 1
+    },
+    "until": until
   },
   "id": "me/lunch/1",
   "op": "grab",
@@ -131,6 +138,7 @@ grab me/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -138,6 +146,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -147,6 +156,7 @@ grab me/lunch/1
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -179,7 +189,10 @@ grab me/lunch/1
 grab you/lunch
 {
   "data": {
-    "/lunch": 3
+    "pos": {
+      "/lunch": 3
+    },
+    "until": until
   },
   "id": "you/lunch",
   "op": "grab",
@@ -204,6 +217,7 @@ grab you/lunch
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -211,6 +225,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -218,6 +233,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -227,6 +243,7 @@ grab you/lunch
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -260,8 +277,11 @@ grab you/lunch
 grab you/lunch/2
 {
   "data": {
-    "/lunch": 4,
-    "/lunch/2": 1
+    "pos": {
+      "/lunch": 4,
+      "/lunch/2": 1
+    },
+    "until": until
   },
   "id": "you/lunch/2",
   "op": "grab",
@@ -286,6 +306,7 @@ grab you/lunch/2
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -293,6 +314,7 @@ grab you/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -300,6 +322,7 @@ grab you/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -307,6 +330,7 @@ grab you/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -316,6 +340,7 @@ grab you/lunch/2
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -325,6 +350,7 @@ grab you/lunch/2
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -360,8 +386,11 @@ grab you/lunch/2
 grab charly/lunch/2
 {
   "data": {
-    "/lunch": 4,
-    "/lunch/2": 2
+    "pos": {
+      "/lunch": 4,
+      "/lunch/2": 2
+    },
+    "until": until
   },
   "id": "charly/lunch/2",
   "op": "grab",
@@ -386,6 +415,7 @@ grab charly/lunch/2
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -393,6 +423,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -400,6 +431,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -407,6 +439,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
@@ -417,6 +450,7 @@ grab charly/lunch/2
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -426,6 +460,7 @@ grab charly/lunch/2
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -433,6 +468,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -469,7 +505,10 @@ grab charly/lunch/2
 grab me/dinner
 {
   "data": {
-    "/dinner": 1
+    "pos": {
+      "/dinner": 1
+    },
+    "until": until
   },
   "id": "me/dinner",
   "op": "grab",
@@ -494,6 +533,7 @@ grab me/dinner
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -503,6 +543,7 @@ grab me/dinner
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -510,6 +551,7 @@ grab me/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -517,6 +559,7 @@ grab me/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -524,6 +567,7 @@ grab me/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
@@ -534,6 +578,7 @@ grab me/dinner
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -543,6 +588,7 @@ grab me/dinner
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -550,6 +596,7 @@ grab me/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -588,7 +635,10 @@ grab me/dinner
 grab you/dinner
 {
   "data": {
-    "/dinner": 2
+    "pos": {
+      "/dinner": 2
+    },
+    "until": until
   },
   "id": "you/dinner",
   "op": "grab",
@@ -613,6 +663,7 @@ grab you/dinner
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -620,6 +671,7 @@ grab you/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -629,6 +681,7 @@ grab you/dinner
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -636,6 +689,7 @@ grab you/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -643,6 +697,7 @@ grab you/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -650,6 +705,7 @@ grab you/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
@@ -660,6 +716,7 @@ grab you/dinner
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -669,6 +726,7 @@ grab you/dinner
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -676,6 +734,7 @@ grab you/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -715,7 +774,10 @@ grab you/dinner
 grab charly/lunch
 {
   "data": {
-    "/lunch": 5
+    "pos": {
+      "/lunch": 5
+    },
+    "until": until
   },
   "id": "charly/lunch",
   "op": "grab",
@@ -740,6 +802,7 @@ grab charly/lunch
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -747,6 +810,7 @@ grab charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -756,6 +820,7 @@ grab charly/lunch
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -763,6 +828,7 @@ grab charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -770,6 +836,7 @@ grab charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -777,6 +844,7 @@ grab charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
@@ -785,6 +853,7 @@ grab charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -794,6 +863,7 @@ grab charly/lunch
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -803,6 +873,7 @@ grab charly/lunch
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -810,6 +881,7 @@ grab charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -850,8 +922,11 @@ grab charly/lunch
 grab charly/lunch/1
 {
   "data": {
-    "/lunch": 6,
-    "/lunch/1": 2
+    "pos": {
+      "/lunch": 6,
+      "/lunch/1": 2
+    },
+    "until": until
   },
   "id": "charly/lunch/1",
   "op": "grab",
@@ -876,6 +951,7 @@ grab charly/lunch/1
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -883,6 +959,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -892,6 +969,7 @@ grab charly/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -899,6 +977,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -906,6 +985,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -913,6 +993,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
@@ -921,6 +1002,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -928,6 +1010,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -937,6 +1020,7 @@ grab charly/lunch/1
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -944,6 +1028,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -953,6 +1038,7 @@ grab charly/lunch/1
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -960,6 +1046,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1001,7 +1088,10 @@ grab charly/lunch/1
 grab you/lunch
 {
   "data": {
-    "/lunch": 3
+    "pos": {
+      "/lunch": 3
+    },
+    "until": until
   },
   "id": "you/lunch",
   "op": "grab",
@@ -1026,6 +1116,7 @@ grab you/lunch
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -1033,6 +1124,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -1042,6 +1134,7 @@ grab you/lunch
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -1049,6 +1142,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1056,6 +1150,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -1063,6 +1158,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
@@ -1071,6 +1167,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -1078,6 +1175,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1087,6 +1185,7 @@ grab you/lunch
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1094,6 +1193,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1103,6 +1203,7 @@ grab you/lunch
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch/2": timestamp
           },
@@ -1110,6 +1211,7 @@ grab you/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1174,6 +1276,7 @@ release me/lunch/2
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -1181,6 +1284,7 @@ release me/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -1190,6 +1294,7 @@ release me/lunch/2
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -1197,6 +1302,7 @@ release me/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1204,6 +1310,7 @@ release me/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -1213,6 +1320,7 @@ release me/lunch/2
           "exes": {
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1220,6 +1328,7 @@ release me/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -1227,6 +1336,7 @@ release me/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1236,6 +1346,7 @@ release me/lunch/2
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1243,6 +1354,7 @@ release me/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1252,6 +1364,7 @@ release me/lunch/2
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1293,8 +1406,11 @@ release me/lunch/2
 grab me/lunch/1
 {
   "data": {
-    "/lunch": 2,
-    "/lunch/1": 1
+    "pos": {
+      "/lunch": 2,
+      "/lunch/1": 1
+    },
+    "until": until
   },
   "id": "me/lunch/1",
   "op": "grab",
@@ -1319,6 +1435,7 @@ grab me/lunch/1
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -1326,6 +1443,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -1335,6 +1453,7 @@ grab me/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -1342,6 +1461,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1349,6 +1469,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -1358,6 +1479,7 @@ grab me/lunch/1
           "exes": {
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1365,6 +1487,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -1372,6 +1495,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1381,6 +1505,7 @@ grab me/lunch/1
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1388,6 +1513,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1397,6 +1523,7 @@ grab me/lunch/1
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1438,8 +1565,11 @@ grab me/lunch/1
 grab charly/lunch/2
 {
   "data": {
-    "/lunch": 4,
-    "/lunch/2": 1
+    "pos": {
+      "/lunch": 4,
+      "/lunch/2": 1
+    },
+    "until": until
   },
   "id": "charly/lunch/2",
   "op": "grab",
@@ -1464,6 +1594,7 @@ grab charly/lunch/2
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -1471,6 +1602,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -1480,6 +1612,7 @@ grab charly/lunch/2
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch": timestamp
           },
@@ -1487,6 +1620,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1494,6 +1628,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -1503,6 +1638,7 @@ grab charly/lunch/2
           "exes": {
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1510,6 +1646,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -1517,6 +1654,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1526,6 +1664,7 @@ grab charly/lunch/2
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1533,6 +1672,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1542,6 +1682,7 @@ grab charly/lunch/2
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1606,6 +1747,7 @@ release me/lunch
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -1613,6 +1755,7 @@ release me/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -1622,6 +1765,7 @@ release me/lunch
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1629,6 +1773,7 @@ release me/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -1638,6 +1783,7 @@ release me/lunch
           "exes": {
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1645,6 +1791,7 @@ release me/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -1652,6 +1799,7 @@ release me/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1661,6 +1809,7 @@ release me/lunch
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1668,6 +1817,7 @@ release me/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1677,6 +1827,7 @@ release me/lunch
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1718,8 +1869,11 @@ release me/lunch
 grab charly/lunch/2
 {
   "data": {
-    "/lunch": 3,
-    "/lunch/2": 1
+    "pos": {
+      "/lunch": 3,
+      "/lunch/2": 1
+    },
+    "until": until
   },
   "id": "charly/lunch/2",
   "op": "grab",
@@ -1744,6 +1898,7 @@ grab charly/lunch/2
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -1751,6 +1906,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -1760,6 +1916,7 @@ grab charly/lunch/2
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1767,6 +1924,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -1776,6 +1934,7 @@ grab charly/lunch/2
           "exes": {
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1783,6 +1942,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -1790,6 +1950,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1799,6 +1960,7 @@ grab charly/lunch/2
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1806,6 +1968,7 @@ grab charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1815,6 +1978,7 @@ grab charly/lunch/2
       "/lunch/2": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/2": timestamp
           },
@@ -1879,6 +2043,7 @@ release charly/lunch/2
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -1886,6 +2051,7 @@ release charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -1895,6 +2061,7 @@ release charly/lunch/2
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1902,6 +2069,7 @@ release charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -1912,11 +2080,13 @@ release charly/lunch/2
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -1924,6 +2094,7 @@ release charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1933,6 +2104,7 @@ release charly/lunch/2
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -1940,6 +2112,7 @@ release charly/lunch/2
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -1981,8 +2154,11 @@ release charly/lunch/2
 grab me/lunch/1
 {
   "data": {
-    "/lunch": 1,
-    "/lunch/1": 1
+    "pos": {
+      "/lunch": 1,
+      "/lunch/1": 1
+    },
+    "until": until
   },
   "id": "me/lunch/1",
   "op": "grab",
@@ -2007,6 +2183,7 @@ grab me/lunch/1
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -2014,6 +2191,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2023,6 +2201,7 @@ grab me/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -2030,6 +2209,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2040,11 +2220,13 @@ grab me/lunch/1
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch": timestamp
           },
@@ -2052,6 +2234,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2061,6 +2244,7 @@ grab me/lunch/1
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -2068,6 +2252,7 @@ grab me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2132,6 +2317,7 @@ release charly/lunch
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -2139,6 +2325,7 @@ release charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2148,6 +2335,7 @@ release charly/lunch
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -2155,6 +2343,7 @@ release charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2165,6 +2354,7 @@ release charly/lunch
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2172,11 +2362,13 @@ release charly/lunch
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2186,6 +2378,7 @@ release charly/lunch
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -2193,6 +2386,7 @@ release charly/lunch
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2257,6 +2451,7 @@ release charly/lunch/1
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -2264,6 +2459,7 @@ release charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2273,6 +2469,7 @@ release charly/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -2280,6 +2477,7 @@ release charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2290,6 +2488,7 @@ release charly/lunch/1
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2297,6 +2496,7 @@ release charly/lunch/1
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -2304,6 +2504,7 @@ release charly/lunch/1
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         }
@@ -2311,6 +2512,7 @@ release charly/lunch/1
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/lunch/1": timestamp
           },
@@ -2320,6 +2522,7 @@ release charly/lunch/1
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         }
@@ -2382,6 +2585,7 @@ release me/lunch/1
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -2389,6 +2593,7 @@ release me/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2398,6 +2603,7 @@ release me/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2408,6 +2614,7 @@ release me/lunch/1
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2415,6 +2622,7 @@ release me/lunch/1
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -2422,6 +2630,7 @@ release me/lunch/1
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         }
@@ -2461,8 +2670,11 @@ release me/lunch/1
 grab charly/lunch/1
 {
   "data": {
-    "/lunch": 4,
-    "/lunch/1": 1
+    "pos": {
+      "/lunch": 4,
+      "/lunch/1": 1
+    },
+    "until": until
   },
   "id": "charly/lunch/1",
   "op": "grab",
@@ -2487,6 +2699,7 @@ grab charly/lunch/1
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -2494,6 +2707,7 @@ grab charly/lunch/1
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2503,6 +2717,7 @@ grab charly/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2513,6 +2728,7 @@ grab charly/lunch/1
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2520,6 +2736,7 @@ grab charly/lunch/1
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -2527,6 +2744,7 @@ grab charly/lunch/1
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2536,6 +2754,7 @@ grab charly/lunch/1
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2577,7 +2796,10 @@ grab charly/lunch/1
 grab you/dinner
 {
   "data": {
-    "/dinner": 2
+    "pos": {
+      "/dinner": 2
+    },
+    "until": until
   },
   "id": "you/dinner",
   "op": "grab",
@@ -2602,6 +2824,7 @@ grab you/dinner
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "me/dinner": timestamp
           },
@@ -2609,6 +2832,7 @@ grab you/dinner
         },
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2618,6 +2842,7 @@ grab you/dinner
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2628,6 +2853,7 @@ grab you/dinner
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2635,6 +2861,7 @@ grab you/dinner
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -2642,6 +2869,7 @@ grab you/dinner
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2651,6 +2879,7 @@ grab you/dinner
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2715,6 +2944,7 @@ release me/dinner
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2724,6 +2954,7 @@ release me/dinner
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2734,6 +2965,7 @@ release me/dinner
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2741,6 +2973,7 @@ release me/dinner
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -2748,6 +2981,7 @@ release me/dinner
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2757,6 +2991,7 @@ release me/dinner
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2798,7 +3033,10 @@ release me/dinner
 grab you/dinner
 {
   "data": {
-    "/dinner": 1
+    "pos": {
+      "/dinner": 1
+    },
+    "until": until
   },
   "id": "you/dinner",
   "op": "grab",
@@ -2823,6 +3061,7 @@ grab you/dinner
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2832,6 +3071,7 @@ grab you/dinner
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2842,6 +3082,7 @@ grab you/dinner
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2849,6 +3090,7 @@ grab you/dinner
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -2856,6 +3098,7 @@ grab you/dinner
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2865,6 +3108,7 @@ grab you/dinner
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2929,6 +3173,7 @@ shutdown should fail
       "/dinner": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/dinner": timestamp
           },
@@ -2938,6 +3183,7 @@ shutdown should fail
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -2948,6 +3194,7 @@ shutdown should fail
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -2955,6 +3202,7 @@ shutdown should fail
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -2962,6 +3210,7 @@ shutdown should fail
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -2971,6 +3220,7 @@ shutdown should fail
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -3035,6 +3285,7 @@ release you/dinner
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -3045,6 +3296,7 @@ release you/dinner
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -3052,6 +3304,7 @@ release you/dinner
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -3059,6 +3312,7 @@ release you/dinner
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -3068,6 +3322,7 @@ release you/dinner
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -3132,6 +3387,7 @@ shutdown should fail
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -3142,6 +3398,7 @@ shutdown should fail
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -3149,6 +3406,7 @@ shutdown should fail
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -3156,6 +3414,7 @@ shutdown should fail
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -3165,6 +3424,7 @@ shutdown should fail
       "/lunch/1": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "charly/lunch/1": timestamp
           },
@@ -3229,6 +3489,7 @@ release charly/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -3239,6 +3500,7 @@ release charly/lunch/1
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -3246,6 +3508,7 @@ release charly/lunch/1
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -3253,6 +3516,7 @@ release charly/lunch/1
           "exes": {
             "charly/lunch/1": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         }
@@ -3315,6 +3579,7 @@ release you/lunch/1
       "/lunch": [
         {
           "exes": {},
+          "max_timestamp": timestamp,
           "owners": {
             "you/lunch": timestamp
           },
@@ -3325,6 +3590,7 @@ release you/lunch/1
             "charly/lunch/2": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         },
@@ -3332,6 +3598,7 @@ release you/lunch/1
           "exes": {
             "charly/lunch": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": false
         },
@@ -3340,6 +3607,7 @@ release you/lunch/1
             "charly/lunch/1": timestamp,
             "you/lunch/2": timestamp
           },
+          "max_timestamp": timestamp,
           "owners": {},
           "shared": true
         }

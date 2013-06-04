@@ -136,8 +136,9 @@ class Grab:
         self.url = url
         self.owner = owner
         self.sleep = sleep
-        self.max_attempts=MAX_ATTEMPTS
+        self.max_attempts=max_attempts
         self.verbose = verbose
+        self.max_wait = int(time.time()*1000) + max_attempts*sleep*1000
         if ppid is None:
             try:
                 self.ppid = os.getppid()
@@ -196,6 +197,12 @@ class Grab:
                     return None
                 if response.get('status') == 'ok':
                     return response
+                if self.max_wait is not None:
+                    if response.get('data', {'until': 0}).get('until', 0) > self.max_wait:
+                        if self.verbose:
+                            print >>sys.stderr, "exiting after being told the delay would exceed my maximum wait time"
+                        return None
+                        
                 if self.verbose:
                     print >>sys.stderr, "sleeping after getting non-ok:"
                     print >>sys.stderr, dumps(response, indent=2, sort_keys=True, separators=(',',': '))
@@ -278,9 +285,11 @@ if __name__ == '__main__':
 
     if until is not None:
         offset = 0
+        ok = False
         for count, unit in until_regexp.findall(until):
             offset += int(count)*until_unit[unit]
-        if offset == 0:
+            ok = True
+        if not ok:
             usage("--until=<time> must be a duration expressed in <n>{s|m|h|d|w}")
         until = int(time.time()*1000) + offset*1000
 
@@ -328,6 +337,10 @@ if __name__ == '__main__':
             sys.exit(0)
         sys.exit(1)
     if result is None or result['status'] != 'ok':
+        if op == 'grab':
+            if verbose:
+                print >>sys.stderr, "Releasing", resource
+            grab.get('release', resource)
         sys.exit(1)
     sys.exit(0)
 

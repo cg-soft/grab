@@ -1,9 +1,10 @@
-# actor  op       resource  comment
-# =====  ==       ========  =======
-  any    config   any
-  me     grab     lunch/1   grab me/lunch/1
-  you    grab     lunch/2   grab you/lunch/2
-  you    release  lunch/2   release me/lunch/2
-  me     release  lunch/1   release me/lunch/1
-  any    stats    all       stats
-  any    shutdown all       shutdown should now work
+# actor  op       resource  for rc comment
+# =====  ==       ========  === == =======
+  any    config   any       0s  0
+  me     grab     lunch/1   0s  0  grab me/lunch/1
+  you    grab     lunch/2   99w 0  grab you/lunch/2
+  charly grab     lunch/2/1 0s  1  try to grab, but give up fast
+  you    release  lunch/2   0s  0  release me/lunch/2
+  me     release  lunch/1   0s  0  release me/lunch/1
+  any    stats    all       0s  0  stats
+  any    shutdown all       0s  0  shutdown should now work
