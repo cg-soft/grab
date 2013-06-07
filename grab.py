@@ -319,7 +319,7 @@ if __name__ == '__main__':
                 print >>sys.stderr, "Old sha1sum: %s\nNew sha1sum: %s" % (old_sha1sum, sha1sum)
             if old_sha1sum == sha1sum:
                 print "No restart required, running service matches specified --hash string"
-                sys.exit(0)
+                sys.exit(7)
 
     result = grab.poll(op, resource, until, keepalive)
 
