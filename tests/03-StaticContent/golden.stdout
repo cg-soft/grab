@@ -1,0 +1,5 @@
+Server running at http://127.0.0.1:port
+GET ./static/index.html
+GET ./static/index.html
+GET ./static/index.html
+GET ./static/404

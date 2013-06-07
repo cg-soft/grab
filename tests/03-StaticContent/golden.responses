@@ -1,0 +1,44 @@
+-> ui/index.html
+HTTP/1.1 200 OK
+Content-Type: text/html
+Date: date
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+<!doctype html>  
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+==
+-> ui/index.html
+HTTP/1.1 200 OK
+Content-Type: text/html
+Date: date
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+<!doctype html>  
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+==
+-> ui/index.html
+HTTP/1.1 200 OK
+Content-Type: text/html
+Date: date
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+<!doctype html>  
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+==
+-> 404 not found
+HTTP/1.1 404 Not found: ./static/404
+Date: date
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+Not found: ./static/404
+==

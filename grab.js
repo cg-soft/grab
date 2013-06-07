@@ -9,10 +9,13 @@ http://creativecommons.org/publicdomain/zero/1.0/legalcode
 
 var http = require('http');
 var url = require('url');
+var fs = require('fs');
+var path = require('path');
 
 var config = { 'help': false,
                'timestamp': new Date().getTime(),
                'hash': '',
+               'static_content': './static',
                'version': "VERSION",
                'debug': false,
                'port': 1337,
@@ -28,6 +31,12 @@ var stats = { 'uptime': 0,
               'max_queue_owner': null,
               'by_owner': {},
               'by_lock': {} };
+
+// For serving the static web UI pieces
+var mime_types = { '.js':   'text/javascript',
+                   '.css':  'text/css',
+                   '.ico':  'image/x-icon',
+                   '.html': 'text/html' };
 
 /* Note that we spend the time to do server validation of
  * the owner and resource parameters, because otherwise it
@@ -255,7 +264,6 @@ Queue = function (){
 
 }
 
-
 function purge(resource, cutoff) {
   var purged = 0;
   if (resource in queues) {
@@ -369,8 +377,47 @@ var action = {
 };
 
 http.createServer(function (req, res) {
+
+  if (req.method !== 'GET') {
+    res.writeHead(405, "Unsupported request method");
+    res.end();
+    return;
+  }
+
   var req_url = url.parse(req.url, true);
   var resource = req_url.pathname;
+
+  // Serve static files if resource begins with the path /ui/...
+  if (resource === '/ui' || (resource.length > 3 && resource.substring(0,4) === '/ui/')) {
+    var file_path = config.static_content;
+    if (resource === '/ui' || resource === '/ui/') file_path += '/index.html';
+    else file_path += resource.substring(3);
+    if (config.debug) console.log('GET '+file_path);
+    fs.exists(file_path, function (exists) {
+      if (exists) {
+        var stream = fs.createReadStream(file_path)
+        stream.on('error', function (error) {
+          res.writeHead(500, error+"\n");
+          res.end(error);
+        });
+        var extname = path.extname(file_path);
+        if (extname in mime_types) {
+          res.setHeader('Content-Type', mime_types[extname]);
+        } else {
+          res.setHeader('Content-Type', 'text/plain');
+        }
+        res.writeHead(200);
+        stream.pipe(res);
+        return;
+      } else {
+        res.writeHead(404, "Not found: "+file_path);
+        res.end("Not found: "+file_path+"\n");
+        return;
+      }
+    });
+    return;
+  }
+
   var op = req_url.query['op'];
   var id = req_url.query['id'];
   var until = req_url.query['until'];

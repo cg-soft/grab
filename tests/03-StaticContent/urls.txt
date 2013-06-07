@@ -1,0 +1,6 @@
+# resource      comment
+# ========      =======
+  ui            -> ui/index.html
+  ui/           -> ui/index.html
+  ui/index.html -> ui/index.html
+  ui/404        -> 404 not found
