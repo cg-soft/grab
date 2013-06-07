@@ -1,6 +1,7 @@
 --help=true
 --timestamp=timestamp
 --hash=
+--static_content=./static
 --version=VERSION
 --debug=false
 --port=1337
@@ -12,6 +13,7 @@ Unrecognized argument: --another-unknown-option
 --help=false
 --timestamp=timestamp
 --hash=
+--static_content=./static
 --version=VERSION
 --debug=true
 --port=1337

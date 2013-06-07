@@ -8,6 +8,7 @@ GET http://host:port/any?id=any&op=config&until=timestamp
     "help": false,
     "host": "127.0.0.1",
     "port": "port",
+    "static_content": "./static",
     "timeout": "1000000",
     "timestamp": timestamp,
     "version": "VERSION"
@@ -29,6 +30,7 @@ GET http://host:port/?id=any&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -77,6 +79,7 @@ GET http://host:port/?id=me&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -151,6 +154,7 @@ GET http://host:port/?id=you&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -229,6 +233,7 @@ GET http://host:port/?id=charly&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -322,6 +327,7 @@ GET http://host:port/?id=you&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -397,6 +403,7 @@ GET http://host:port/?id=me&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -465,6 +472,7 @@ GET http://host:port/?id=any&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -522,6 +530,7 @@ GET http://host:port/any?id=any&op=config&until=timestamp
     "help": false,
     "host": "127.0.0.1",
     "port": "port",
+    "static_content": "./static",
     "timeout": "1000000",
     "timestamp": timestamp,
     "version": "VERSION"
@@ -543,6 +552,7 @@ GET http://host:port/?id=any&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -591,6 +601,7 @@ GET http://host:port/?id=me&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -665,6 +676,7 @@ GET http://host:port/?id=you&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -743,6 +755,7 @@ GET http://host:port/?id=charly&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -836,6 +849,7 @@ GET http://host:port/?id=you&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -911,6 +925,7 @@ GET http://host:port/?id=me&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
@@ -979,6 +994,7 @@ GET http://host:port/?id=any&op=dump
       "help": false,
       "host": "127.0.0.1",
       "port": "port",
+      "static_content": "./static",
       "timeout": "1000000",
       "timestamp": timestamp,
       "version": "VERSION"
