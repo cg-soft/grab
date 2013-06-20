@@ -47,9 +47,51 @@
       <li><a href="#config">Config</a></li>
     </ul>
 
+    <div class="messages"></div>
+
     <div class="tab" id="locks">
-      <h3>Locks</h3>
-      <p>Hello World</p>
+      <ul class="content">
+        <li><b>Manually grab lock:</b>
+          <ul>
+            <li><table>
+              <tr><td>Resource Name:</td><td><input type="text" width="80" /></td></tr>
+              <tr><td>Lock Duration:</td><td><select>
+                <option value="">- timespan -</option>
+                <option value="1h">1 hour</option>
+                <option value="2h">2 hours</option>
+                <option value="4h">4 hours</option>
+                <option value="8h">8 hours</option>
+                <option value="1d">1 day</option>
+                <option value="2d">1 days</option>
+                <option value="4d">1 days</option>
+                <option value="1w">1 week</option>
+                <option value="2w">2 weeks</option>
+                <option value="1m">1 month</option>
+              </select></td></tr>
+            </table></li>
+          </ul>
+        </li><li><b>Existing Locks:</b>
+          <ul>
+            <li><table class="ledger">
+              <thead>
+                <tr>
+                  <th class="upperleft">Resource</th>
+                  <th class="upper">Owner</th>
+                  <th class="upperright">Expires</th>
+                </tr>
+              </thead>
+              <div id="#existinglocks">
+                <tr class="odd"><td>name</td><td>owner</td><td>now</td></tr>
+                <tr class="even"><td>name</td><td>owner</td><td>now</td></tr>
+                <tr class="odd"><td>name</td><td>owner</td><td>now</td></tr>
+                <tr class="even"><td>name</td><td>owner</td><td>now</td></tr>
+                <tr class="odd"><td>name</td><td>owner</td><td>now</td></tr>
+              </div>
+              <tfoot><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tfoot>
+            </table></li>
+          <ul>
+        </li>
+      </ul>
     </div>
  
     <div class="tab" id="stats">

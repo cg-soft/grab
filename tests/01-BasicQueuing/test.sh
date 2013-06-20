@@ -44,8 +44,8 @@ begin_test BasicQueuing
                   "$test_path"/actual.responses.filtered\
    || fail_test BasicQueuing "responses differs from golden output" "see diff"
 
-  sed -e "s/$port/port/g"\
-      -e "s/until=[0-9]*/until=timestamp/g"\
+  sed -e "s/until=[0-9]*/until=timestamp/g"\
+      -e "s/$port/port/g"\
     "$test_path"/actual.stdout > "$test_path"/actual.stdout.filtered
 
   normalized_diff "$test_path"/golden.stdout\

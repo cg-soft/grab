@@ -68,18 +68,18 @@ begin_test GrabCLient
   sed -e 's/^\(            "[^"]*"\): [1-9][0-9]*/\1: timestamp/'\
       -e "s/until=[0-9]*/until=timestamp/g"\
       -e '/^WARNING:/d'\
-      -e "s/$host:$port/host:port/g"\
       -e 's/\(uptime"\): [1-9][0-9]*/\1: uptime/'\
       -e 's/\(until"\): [1-9][0-9]*/\1: until/'\
       -e 's/\(timestamp"\): [1-9][0-9]*/\1: timestamp/'\
       -e 's/\(port"\): "[1-9][0-9]*"/\1: "port"/'\
+      -e "s/$host:$port/host:port/g"\
     "$test_path"/actual.responses > "$test_path"/actual.responses.filtered
   normalized_diff "$test_path"/golden.responses\
                   "$test_path"/actual.responses.filtered\
    || fail_test GrabCLient "responses differs from golden output" "see diff"
 
-  sed -e "s/$port/port/g"\
-      -e "s/until=[0-9]*/until=timestamp/g"\
+  sed -e "s/until=[0-9]*/until=timestamp/g"\
+      -e "s/$port/port/g"\
     "$test_path"/actual.stdout > "$test_path"/actual.stdout.filtered
   normalized_diff "$test_path"/golden.stdout\
                   "$test_path"/actual.stdout.filtered\
