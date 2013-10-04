@@ -20,6 +20,7 @@ Features include:
 * Pure in memory state, no databases or files required.
 * Clean shutdown to preserve continuous service even during upgrades.
 * Support for long term locking (e.g. code freeze / maintenance) by setting lock expiration time into the future.
+* Client "keepalive" process monitors parent process and is able to run a cleanup script should the parent process die or be killed.
 
 Components
 ----------
