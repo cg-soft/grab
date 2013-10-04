@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 # Created by Christian Goetze - http://blog.fortified-bikesheds.com/ - and released under
 # the terms of the CC0 1.0 Universal legal code:
 # 
@@ -77,6 +76,10 @@ Options are:
 --help
    Displays this text
 
+--cleanup=<command>
+   Command to run on cleanup when the lock is released, either via keep-alive
+   or via explicit lock release
+
 --hash
    Used in conjunction with "shutdown" to check whether a shutdown
    is required. Specify the sha1sum or md5sum of the new grab.js file,
@@ -132,18 +135,23 @@ def IsProcessRunning(processId):
     return False
 
 class Grab:
-    def __init__(self, owner, url=GRAB_URL, sleep=SLEEP, max_attempts=MAX_ATTEMPTS, verbose=False, ppid=None):
+    def __init__(self, owner, url=GRAB_URL, sleep=SLEEP, max_attempts=MAX_ATTEMPTS, verbose=False, ppid=None, cleanup=None):
         self.url = url
         self.owner = owner
         self.sleep = sleep
         self.max_attempts=max_attempts
         self.verbose = verbose
+        self.cleanup = cleanup
         self.max_wait = int(time.time()*1000) + max_attempts*sleep*1000
         if ppid is None:
             try:
                 self.ppid = os.getppid()
             except:
                 self.ppid = None
+            if self.ppid:
+                # escape our process group so we don't automatically die when the
+                # parent process dies.
+                os.setpgid(os.getpid(), os.getpid())
         else:
             self.ppid = ppid
 
@@ -171,6 +179,18 @@ class Grab:
         else:
             return None
 
+    def do_cleanup(self):
+        if self.cleanup:
+            if self.verbose:
+                print >>sys.stderr, "Running cleanup command"
+            os.system(self.cleanup)
+
+    def die(self, reason="Parent process died, shutting down", rc=0):
+        self.do_cleanup()
+        if self.verbose:
+            print >>sys.stderr, reason
+        sys.exit(rc)
+
     def poll(self, op, resource, until, keepalive):
         attempts = self.max_attempts
         while keepalive or attempts > 0:
@@ -180,13 +200,9 @@ class Grab:
                 if os.name == 'nt':
                     # On windows, use the windows process check
                     if not IsProcessRunning(self.ppid):
-                        if self.verbose:
-                            print >>sys.stderr, "Parent process died, shutting down"
-                        sys.exit()
+                        self.die()
                 elif os.getppid() != self.ppid:
-                    if self.verbose:
-                        print >>sys.stderr, "Parent process died, shutting down"
-                    sys.exit()
+                    self.die()
             response = self.get(op, resource, until)
             if keepalive:
                 if self.verbose:
@@ -223,6 +239,7 @@ if __name__ == '__main__':
     sha1sum = None
     ppid = None
     until = None
+    cleanup = None
     for arg in sys.argv[1:]:
         if parse_options:
             if arg in ("-h", "--help"):
@@ -232,6 +249,9 @@ if __name__ == '__main__':
                 continue
             if arg in ("--verbose",):
                 verbose = True
+                continue
+            if arg.startswith("--cleanup="):
+                cleanup = arg[len("--cleanup="):]
                 continue
             if arg.startswith("--hash="):
                 sha1sum = arg[len("--hash="):]
@@ -274,9 +294,6 @@ if __name__ == '__main__':
     if op is None:
         usage("Must specify op")
 
-    if not owner.isalnum():
-        usage("Value for --owner must be alphanumeric: %s." % owner)
-
     if ppid is not None:
         try:
             ppid = int(ppid)
@@ -309,6 +326,7 @@ if __name__ == '__main__':
                 sleep=sleep,
                 ppid=ppid,
                 max_attempts=max_attempts,
+                cleanup=cleanup,
                 verbose=verbose)
 
     if op == 'shutdown':
@@ -335,12 +353,13 @@ if __name__ == '__main__':
     if op == 'shutdown':
         if result is None or result['status'] == 'ok':
             sys.exit(0)
-        sys.exit(1)
+        grab.die(reason=("%s failed" % op), rc=1)
     if result is None or result['status'] != 'ok':
         if op == 'grab':
             if verbose:
                 print >>sys.stderr, "Releasing", resource
             grab.get('release', resource)
-        sys.exit(1)
-    sys.exit(0)
+        grab.die(reason=("%s failed" % op), rc=1)
+    else:
+        grab.die(reason="ok", rc=0)
 

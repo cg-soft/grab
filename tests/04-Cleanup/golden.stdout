@@ -1,0 +1,40 @@
+Server running at http://host:port
+GET: op=grab; id=christian.goetze; until=timestamp; resource=/path/to/my/resource
+Adding christian.goetze/path/to/my/resource to end of /path/to/my/resource
+Adding christian.goetze/path/to/my/resource to end of /path/to/my
+Adding christian.goetze/path/to/my/resource to end of /path/to
+Adding christian.goetze/path/to/my/resource to end of /path
+GET: op=grab; id=christian.goetze; until=timestamp; resource=/path/to/my/resource
+Found christian.goetze/path/to/my/resource at /path/to/my/resource[0]
+Found christian.goetze/path/to/my/resource at /path/to/my[0]
+Found christian.goetze/path/to/my/resource at /path/to[0]
+Found christian.goetze/path/to/my/resource at /path[0]
+GET: op=grab; id=christian.goetze; until=timestamp; resource=/path/to/my/resource
+Found christian.goetze/path/to/my/resource at /path/to/my/resource[0]
+Found christian.goetze/path/to/my/resource at /path/to/my[0]
+Found christian.goetze/path/to/my/resource at /path/to[0]
+Found christian.goetze/path/to/my/resource at /path[0]
+GET: op=release; id=christian.goetze; until=timestamp; resource=/path/to/my/resource
+Found christian.goetze/path/to/my/resource at /path/to/my/resource[0]
+Removing christian.goetze/path/to/my/resource from /path/to/my/resource
+Found christian.goetze/path/to/my/resource at /path/to/my[0]
+Removing christian.goetze/path/to/my/resource from /path/to/my
+Found christian.goetze/path/to/my/resource at /path/to[0]
+Removing christian.goetze/path/to/my/resource from /path/to
+Found christian.goetze/path/to/my/resource at /path[0]
+Removing christian.goetze/path/to/my/resource from /path
+GET: op=grab; id=christian.goetze; until=timestamp; resource=/path/to/my/resource
+Adding christian.goetze/path/to/my/resource to end of /path/to/my/resource
+Adding christian.goetze/path/to/my/resource to end of /path/to/my
+Adding christian.goetze/path/to/my/resource to end of /path/to
+Adding christian.goetze/path/to/my/resource to end of /path
+GET: op=grab; id=christian.goetze; until=timestamp; resource=/path/to/my/resource
+Found christian.goetze/path/to/my/resource at /path/to/my/resource[0]
+Found christian.goetze/path/to/my/resource at /path/to/my[0]
+Found christian.goetze/path/to/my/resource at /path/to[0]
+Found christian.goetze/path/to/my/resource at /path[0]
+GET: op=grab; id=christian.goetze; until=timestamp; resource=/path/to/my/resource
+Found christian.goetze/path/to/my/resource at /path/to/my/resource[0]
+Found christian.goetze/path/to/my/resource at /path/to/my[0]
+Found christian.goetze/path/to/my/resource at /path/to[0]
+Found christian.goetze/path/to/my/resource at /path[0]

@@ -5,8 +5,12 @@
 # 
 # http://creativecommons.org/publicdomain/zero/1.0/legalcode
 
-here="$(dirname "$0")"
+# This sample script is used by the 04-Cleanup test. Modifying it will
+# likely break it.
+
+here="${here:-"$(dirname "$0")"}"
 owner=$(whoami)
+logdir="${testpath:-"$here"}"
 
 grab()
 {
@@ -23,7 +27,8 @@ grab()
      --ppid=$$\
      --verbose\
      --owner="$owner"\
-     keepalive "$resource" >"$here"/keepalive.log 2>&1 &
+     --cleanup="sh -c 'echo Hello I crashed or got killed. >> \"$logdir/actual_cleanup.log\"'"\
+     keepalive "$resource" >>"$logdir"/actual_keepalive.log 2>&1 &
      export keepalive_pid=$!
   elif "$here"/grab.py\
      --ppid=$$\
@@ -44,24 +49,25 @@ release()
 {
   local resource="$1"
   echo "Releasing $resource"
-  if [ -n "$keepalive_pid" ] && ps "$keepalive_pid"
+  if [ -n "$keepalive_pid" ] && ps "$keepalive_pid" >/dev/null 2>&1
   then
     # unconditionally kill it dead, it isn't doing anything stateful
     kill -9 "$keepalive_pid"
     echo "Keepalive log"
-    cat "$here"/keepalive.log
-  elif [ -r "$here"/keepalive.log ]
+    cat "$logdir"/actual_keepalive.log
+  elif [ -r "$logdir"/actual_keepalive.log ]
   then
     echo Keepalive died on its own
-    cat "$here"/keepalive.log
+    cat "$logdir"/actual_keepalive.log
   else
     echo No keepalive process used
   fi
-  rm -f "$here"/keepalive.log
+  rm -f "$logdir"/actual_keepalive.log
   if "$here"/grab.py\
      --ppid=$$\
      --verbose\
      --owner="$owner"\
+     --cleanup="sh -c 'echo Hello I terminated normally. >> \"$logdir/actual_cleanup.log\"'"\
      release "$resource"
   then
     echo Released
@@ -79,15 +85,14 @@ release()
   echo "Done releasing $resource"
 }
 
-grab path/to/my/resource || exit 1
-# Do something with it
-sleep 10
-echo doing...
-sleep 10
-echo doing...
-sleep 10
-echo doing...
-sleep 10
-echo done.
-release path/to/my/resource || exit 1
-
+  grab path/to/my/resource || exit 1
+  # Do something with it
+  sleep 10
+  echo doing...
+  sleep 10
+  echo doing...
+  sleep 10
+  echo doing...
+  sleep 10
+  echo done.
+  release path/to/my/resource || exit 1

@@ -45,8 +45,8 @@ var mime_types = { '.js':   'text/javascript',
  * in order to uniquely identify locks. This could be perverted
  * if we allowed "/" in an owner name.
  */
-var resource_regexp = new RegExp('^[a-z0-9A-Z/]+$');
-var owner_regexp = new RegExp('^[a-z0-9A-Z]+$');
+var resource_regexp = new RegExp('^[._a-z0-9A-Z/]+$');
+var owner_regexp = new RegExp('^[._a-z0-9A-Z]+$');
 
 var queues = {};
 var shutdown_pending = false;

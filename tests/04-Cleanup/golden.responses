@@ -1,0 +1,95 @@
+Waiting for path/to/my/resource
+GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+{
+  "data": {
+    "pos": {
+      "/path": 1,
+      "/path/to": 1,
+      "/path/to/my": 1,
+      "/path/to/my/resource": 1
+    },
+    "until": until
+  },
+  "id": "christian.goetze/path/to/my/resource",
+  "op": "grab",
+  "resource": "/path/to/my/resource",
+  "status": "ok"
+}
+ok
+Grabbed - Starting keepalive
+Done waiting for path/to/my/resource
+doing...
+doing...
+doing...
+done.
+Releasing path/to/my/resource
+Keepalive log
+GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+sleeping after getting response to keepalive:
+{
+  "data": {
+    "pos": {
+      "/path": 1,
+      "/path/to": 1,
+      "/path/to/my": 1,
+      "/path/to/my/resource": 1
+    },
+    "until": until
+  },
+  "id": "christian.goetze/path/to/my/resource",
+  "op": "grab",
+  "resource": "/path/to/my/resource",
+  "status": "ok"
+}
+GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+sleeping after getting response to keepalive:
+{
+  "data": {
+    "pos": {
+      "/path": 1,
+      "/path/to": 1,
+      "/path/to/my": 1,
+      "/path/to/my/resource": 1
+    },
+    "until": until
+  },
+  "id": "christian.goetze/path/to/my/resource",
+  "op": "grab",
+  "resource": "/path/to/my/resource",
+  "status": "ok"
+}
+GET http://host:port/path/to/my/resource?id=christian.goetze&op=release
+{
+  "data": 4,
+  "id": "christian.goetze/path/to/my/resource",
+  "op": "release",
+  "resource": "/path/to/my/resource",
+  "status": "ok"
+}
+Running cleanup command
+ok
+Released
+Done releasing path/to/my/resource
+Waiting for path/to/my/resource
+GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+{
+  "data": {
+    "pos": {
+      "/path": 1,
+      "/path/to": 1,
+      "/path/to/my": 1,
+      "/path/to/my/resource": 1
+    },
+    "until": until
+  },
+  "id": "christian.goetze/path/to/my/resource",
+  "op": "grab",
+  "resource": "/path/to/my/resource",
+  "status": "ok"
+}
+ok
+Grabbed - Starting keepalive
+Done waiting for path/to/my/resource
+doing...
+doing...
+doing...
