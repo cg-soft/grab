@@ -7,7 +7,7 @@ host=127.0.0.1
 port=1337
 url=http://$host:$port/
 
-begin_test GrabCLient
+begin_test GrabClient
   node grab.js\
          --debug\
          --timeout=1000000\
@@ -34,7 +34,7 @@ begin_test GrabCLient
            >> "$test_path"/actual.responses 2>&1
         echo "==" >> "$test_path"/actual.responses
       done
-  kill $pid 2>/dev/null && fail_test GrabCLient "service should shut down by itself" "kill succeeded"
+  kill $pid 2>/dev/null && fail_test GrabClient "service should shut down by itself" "kill succeeded"
   # Now inject our own json, just to test it too
   node grab.js\
          --debug\
@@ -76,18 +76,19 @@ begin_test GrabCLient
     "$test_path"/actual.responses > "$test_path"/actual.responses.filtered
   normalized_diff "$test_path"/golden.responses\
                   "$test_path"/actual.responses.filtered\
-   || fail_test GrabCLient "responses differs from golden output" "see diff"
+   || fail_test GrabClient "responses differs from golden output" "see diff"
 
   sed -e "s/until=[0-9]*/until=timestamp/g"\
+      -e 's, [a-z.0-9]*/path/to/my/resource, user/path/to/my/resource,'\
       -e "s/$port/port/g"\
     "$test_path"/actual.stdout > "$test_path"/actual.stdout.filtered
   normalized_diff "$test_path"/golden.stdout\
                   "$test_path"/actual.stdout.filtered\
-   || fail_test GrabCLient "stdout differs from golden output" "see diff"
+   || fail_test GrabClient "stdout differs from golden output" "see diff"
 
   normalized_diff "$test_path"/golden.stderr\
                   "$test_path"/actual.stderr\
-   || fail_test GrabCLient "stderr differs from golden output" "see diff"
+   || fail_test GrabClient "stderr differs from golden output" "see diff"
 
-  kill $pid 2>/dev/null && fail_test GrabCLient "service should shut down by itself" "kill succeeded"
-end_test GrabCLient
+  kill $pid 2>/dev/null && fail_test GrabClient "service should shut down by itself" "kill succeeded"
+end_test GrabClient

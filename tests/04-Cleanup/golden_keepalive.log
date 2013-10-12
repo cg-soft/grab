@@ -1,4 +1,4 @@
-GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+GET http://host:port/path/to/my/resource?id=cg&op=grab
 sleeping after getting response to keepalive:
 {
   "data": {
@@ -10,12 +10,12 @@ sleeping after getting response to keepalive:
     },
     "until": until
   },
-  "id": "christian.goetze/path/to/my/resource",
+  "id": "cg/path/to/my/resource",
   "op": "grab",
   "resource": "/path/to/my/resource",
   "status": "ok"
 }
-GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+GET http://host:port/path/to/my/resource?id=cg&op=grab
 sleeping after getting response to keepalive:
 {
   "data": {
@@ -27,7 +27,7 @@ sleeping after getting response to keepalive:
     },
     "until": until
   },
-  "id": "christian.goetze/path/to/my/resource",
+  "id": "cg/path/to/my/resource",
   "op": "grab",
   "resource": "/path/to/my/resource",
   "status": "ok"

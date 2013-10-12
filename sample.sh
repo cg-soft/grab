@@ -9,7 +9,7 @@
 # likely break it.
 
 here="${here:-"$(dirname "$0")"}"
-owner=$(whoami)
+owner=cg # $(whoami)
 logdir="${testpath:-"$here"}"
 
 grab()

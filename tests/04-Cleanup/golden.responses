@@ -1,5 +1,5 @@
 Waiting for path/to/my/resource
-GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+GET http://host:port/path/to/my/resource?id=cg&op=grab
 {
   "data": {
     "pos": {
@@ -10,7 +10,7 @@ GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
     },
     "until": until
   },
-  "id": "christian.goetze/path/to/my/resource",
+  "id": "cg/path/to/my/resource",
   "op": "grab",
   "resource": "/path/to/my/resource",
   "status": "ok"
@@ -24,7 +24,7 @@ doing...
 done.
 Releasing path/to/my/resource
 Keepalive log
-GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+GET http://host:port/path/to/my/resource?id=cg&op=grab
 sleeping after getting response to keepalive:
 {
   "data": {
@@ -36,12 +36,12 @@ sleeping after getting response to keepalive:
     },
     "until": until
   },
-  "id": "christian.goetze/path/to/my/resource",
+  "id": "cg/path/to/my/resource",
   "op": "grab",
   "resource": "/path/to/my/resource",
   "status": "ok"
 }
-GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+GET http://host:port/path/to/my/resource?id=cg&op=grab
 sleeping after getting response to keepalive:
 {
   "data": {
@@ -53,15 +53,15 @@ sleeping after getting response to keepalive:
     },
     "until": until
   },
-  "id": "christian.goetze/path/to/my/resource",
+  "id": "cg/path/to/my/resource",
   "op": "grab",
   "resource": "/path/to/my/resource",
   "status": "ok"
 }
-GET http://host:port/path/to/my/resource?id=christian.goetze&op=release
+GET http://host:port/path/to/my/resource?id=cg&op=release
 {
   "data": 4,
-  "id": "christian.goetze/path/to/my/resource",
+  "id": "cg/path/to/my/resource",
   "op": "release",
   "resource": "/path/to/my/resource",
   "status": "ok"
@@ -71,7 +71,7 @@ ok
 Released
 Done releasing path/to/my/resource
 Waiting for path/to/my/resource
-GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
+GET http://host:port/path/to/my/resource?id=cg&op=grab
 {
   "data": {
     "pos": {
@@ -82,7 +82,7 @@ GET http://host:port/path/to/my/resource?id=christian.goetze&op=grab
     },
     "until": until
   },
-  "id": "christian.goetze/path/to/my/resource",
+  "id": "cg/path/to/my/resource",
   "op": "grab",
   "resource": "/path/to/my/resource",
   "status": "ok"

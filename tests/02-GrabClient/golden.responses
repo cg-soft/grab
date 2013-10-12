@@ -18,6 +18,7 @@ GET http://host:port/any?id=any&op=config&until=timestamp
   "resource": "/any",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After config any by any:
 GET http://host:port/?id=any&op=dump
@@ -51,6 +52,7 @@ GET http://host:port/?id=any&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 grab me/lunch/1
 GET http://host:port/lunch/1?id=me&op=grab&until=timestamp
@@ -67,6 +69,7 @@ GET http://host:port/lunch/1?id=me&op=grab&until=timestamp
   "resource": "/lunch/1",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After grab lunch/1 by me:
 GET http://host:port/?id=me&op=dump
@@ -126,6 +129,7 @@ GET http://host:port/?id=me&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 grab you/lunch/2
 GET http://host:port/lunch/2?id=you&op=grab&until=timestamp
@@ -142,6 +146,7 @@ GET http://host:port/lunch/2?id=you&op=grab&until=timestamp
   "resource": "/lunch/2",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After grab lunch/2 by you:
 GET http://host:port/?id=you&op=dump
@@ -214,6 +219,7 @@ GET http://host:port/?id=you&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 try to grab, but give up fast
 GET http://host:port/lunch/2/1?id=charly&op=grab&until=timestamp
@@ -221,6 +227,7 @@ exiting after being told the delay would exceed my maximum wait time
 None
 Releasing lunch/2/1
 GET http://host:port/lunch/2/1?id=charly&op=release
+grab failed
 rc = 1; expected 1
 == After grab lunch/2/1 by charly:
 GET http://host:port/?id=charly&op=dump
@@ -305,6 +312,7 @@ GET http://host:port/?id=charly&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 release me/lunch/2
 GET http://host:port/lunch/2?id=you&op=release&until=timestamp
@@ -315,6 +323,7 @@ GET http://host:port/lunch/2?id=you&op=release&until=timestamp
   "resource": "/lunch/2",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After release lunch/2 by you:
 GET http://host:port/?id=you&op=dump
@@ -381,6 +390,7 @@ GET http://host:port/?id=you&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 release me/lunch/1
 GET http://host:port/lunch/1?id=me&op=release&until=timestamp
@@ -391,6 +401,7 @@ GET http://host:port/lunch/1?id=me&op=release&until=timestamp
   "resource": "/lunch/1",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After release lunch/1 by me:
 GET http://host:port/?id=me&op=dump
@@ -433,6 +444,7 @@ GET http://host:port/?id=me&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 stats
 GET http://host:port/all?id=any&op=stats&until=timestamp
@@ -460,6 +472,7 @@ GET http://host:port/all?id=any&op=stats&until=timestamp
   "resource": "/all",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After stats all by any:
 GET http://host:port/?id=any&op=dump
@@ -502,6 +515,7 @@ GET http://host:port/?id=any&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 shutdown should now work
 GET http://host:port/?id=any&op=config
@@ -518,6 +532,7 @@ rc = 0; expected 0
 GET http://host:port/?id=any&op=dump
 Failed to urlopen http://host:port/?id=any&op=dump
 None
+dump failed
 ==
 == Now with our own json.py ==
 
@@ -540,6 +555,7 @@ GET http://host:port/any?id=any&op=config&until=timestamp
   "resource": "/any",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After config any by any:
 GET http://host:port/?id=any&op=dump
@@ -573,6 +589,7 @@ GET http://host:port/?id=any&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 grab me/lunch/1
 GET http://host:port/lunch/1?id=me&op=grab&until=timestamp
@@ -589,6 +606,7 @@ GET http://host:port/lunch/1?id=me&op=grab&until=timestamp
   "resource": "/lunch/1",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After grab lunch/1 by me:
 GET http://host:port/?id=me&op=dump
@@ -648,6 +666,7 @@ GET http://host:port/?id=me&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 grab you/lunch/2
 GET http://host:port/lunch/2?id=you&op=grab&until=timestamp
@@ -664,6 +683,7 @@ GET http://host:port/lunch/2?id=you&op=grab&until=timestamp
   "resource": "/lunch/2",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After grab lunch/2 by you:
 GET http://host:port/?id=you&op=dump
@@ -736,6 +756,7 @@ GET http://host:port/?id=you&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 try to grab, but give up fast
 GET http://host:port/lunch/2/1?id=charly&op=grab&until=timestamp
@@ -743,6 +764,7 @@ exiting after being told the delay would exceed my maximum wait time
 None
 Releasing lunch/2/1
 GET http://host:port/lunch/2/1?id=charly&op=release
+grab failed
 rc = 1; expected 1
 == After grab lunch/2/1 by charly:
 GET http://host:port/?id=charly&op=dump
@@ -827,6 +849,7 @@ GET http://host:port/?id=charly&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 release me/lunch/2
 GET http://host:port/lunch/2?id=you&op=release&until=timestamp
@@ -837,6 +860,7 @@ GET http://host:port/lunch/2?id=you&op=release&until=timestamp
   "resource": "/lunch/2",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After release lunch/2 by you:
 GET http://host:port/?id=you&op=dump
@@ -903,6 +927,7 @@ GET http://host:port/?id=you&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 release me/lunch/1
 GET http://host:port/lunch/1?id=me&op=release&until=timestamp
@@ -913,6 +938,7 @@ GET http://host:port/lunch/1?id=me&op=release&until=timestamp
   "resource": "/lunch/1",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After release lunch/1 by me:
 GET http://host:port/?id=me&op=dump
@@ -955,6 +981,7 @@ GET http://host:port/?id=me&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 stats
 GET http://host:port/all?id=any&op=stats&until=timestamp
@@ -982,6 +1009,7 @@ GET http://host:port/all?id=any&op=stats&until=timestamp
   "resource": "/all",
   "status": "ok"
 }
+ok
 rc = 0; expected 0
 == After stats all by any:
 GET http://host:port/?id=any&op=dump
@@ -1024,6 +1052,7 @@ GET http://host:port/?id=any&op=dump
   "resource": "/",
   "status": "ok"
 }
+ok
 ==
 shutdown should now work
 GET http://host:port/?id=any&op=config
@@ -1040,4 +1069,5 @@ rc = 0; expected 0
 GET http://host:port/?id=any&op=dump
 Failed to urlopen http://host:port/?id=any&op=dump
 None
+dump failed
 ==

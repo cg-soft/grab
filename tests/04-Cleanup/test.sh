@@ -37,6 +37,7 @@ begin_test Cleanup
     # Normalize
     sed -e 's/^\(            "[^"]*"\): [1-9][0-9]*/\1: timestamp/'\
         -e "s/until=[0-9]*/until=timestamp/g"\
+        -e 's, [a-z.0-9]*/path/to/my/resource, user/path/to/my/resource,'\
         -e '/^WARNING:/d'\
         -e '/illed:/d'\
         -e 's/\(uptime"\): [1-9][0-9]*/\1: uptime/'\
